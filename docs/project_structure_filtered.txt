@@ -1,0 +1,16 @@
+--- Folder Structure ---
+[certs]
+[docs]
+[libs]
+    ├── [cjson]
+        ├── [include]
+        └── [lib]
+    └── [curl]
+        ├── [include]
+        ├── [lib]
+Makefile
+[src]
+    ├── main.c
+    └── [output]
+crawler.exe
+--- File Contents ---

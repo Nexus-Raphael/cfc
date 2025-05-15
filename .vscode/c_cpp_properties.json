@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/Develop/VScode/Microsoft VS Code/mingw64/include",
+                "D:/Develop/VScode/Microsoft VS Code/mingw64/x86_64-w64-mingw32/include",
+                "D:/Develop/VScode/curl/include",
+                "D:/Develop/VScode/cJSON"
+            ],
+            "compilerPath": "D:/Develop/VScode/Microsoft VS Code/mingw64/bin/gcc.exe",
+            "intelliSenseMode": "windows-gcc-x64",
+            "cppStandard": "gnu++17",
+            "cStandard": "gnu17"
+        }
+    ],
+    "version": 4
+}

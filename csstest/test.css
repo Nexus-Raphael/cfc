@@ -1,0 +1,43 @@
+h3{
+    color:purple;
+}
+.highlight{
+    background-color: aqua;
+}
+#iii{
+    color: yellowgreen;
+    font-size: larger;
+}
+*{/*通用选择器 */
+    font-family: KaiTi;
+}
+/*子元素选择器*/
+.father>.son{
+    color:grey;
+}                   /*意思是选中.father内部的所有子元素中的.son*/
+.father p{
+    color:brown;
+}
+
+h3 + p{
+    background-color: forestgreen;
+}
+
+/*伪类选择器*/
+#element:hover{
+    background-color: aqua;
+}
+/*
+选择第一个子元素
+选择第n个子元素
+选择状态
+
+*/
+
+
+
+/*伪元素选择器
+::after
+::before
+创建虚拟元素并样式化它们,而不是选择实际存在的元素
+*/

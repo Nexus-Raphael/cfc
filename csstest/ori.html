@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS导入方式</title>
+    <!--外部样式-->
+    <link rel="stylesheet" href="test.css">
+    <!--内部样式-->
+    <style> 
+        /* p{
+            color:rgba(128, 234, 240, 0.774);
+            font-size: 16px;
+        } */
+    </style>
+</head>
+<body>
+   <h1 style="color:skyblue">一个内联样式的天蓝色标题</h1>
+   <h3>让外部样式告诉你,内联样式>内部样式>外部样式</h3>
+    <h4 class="highlight">一个类选择器示例</h4>
+    <h4>紧跟的同级标题,但因为是类选择器起作用</h4>
+    <hr>
+    <p id="iii">一个id选择器段落(选中)</p>
+    <p>一个未选中的段落</p>
+    <p>一个应用了CSS的应用标签</p>
+    <p>类选择器用<ins>.类名</ins><br>id选择器用<ins>#ID名</ins></p>
+    <!-- 下面使用通用选择器 -->
+    <h1><b><i>下面的代码统统使用外联样式(不然太乱了)</i></b></h1>
+    <hr><br>
+    <div class="father">
+        <p class="son">一个子元素选择器示例</p>
+        <p>未被选中的子段落</p>
+        <div>
+            <p class="grandson">一个后代选择器示例</p>
+           
+        </div>
+        <p>//ID>类>标签>所以上面的子元素选择器那里没有改成brown</p>
+    </div>
+    <p>一个独立段落</p>
+    <h3>一个兄弟选择器示例,紧跟在元素之后</h3>
+    <p>另一个独立段落</p>
+    <p id="element">一个 伪类选择器示例,选择特定状态位置,或者用户交互</p>
+</body>
+</html>

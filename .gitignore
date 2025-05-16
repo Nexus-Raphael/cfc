@@ -1,2 +1,5 @@
 # 忽略test文件
-test
+*test*
+
+#忽略待办文件
+todo.*

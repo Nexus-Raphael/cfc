@@ -1,0 +1,24 @@
+.block{
+    width: 300px;
+    background-color: aquamarine;
+    height: 100px;
+}
+.inline{
+    background-color: antiquewhite;
+}
+
+.inline-block{
+    width: 120px;
+}
+
+.btoi{
+    display: inline;
+    background-color: blueviolet;
+    /* width: 200px; */
+}
+
+.itoib{
+    display: inline-block;
+    background-color: cadetblue;
+    width: 450px;
+}

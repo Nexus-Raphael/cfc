@@ -10,7 +10,7 @@
      1.   获取一个以上的用户信息
      2.   checkHistoryHandles是查历史上使用过这个名字的用户，可能没有用（或者是我理解错误）
 3.   [codeforces.com/api/contest.ratingChanges?contestId=2102](https://codeforces.com/api/contest.ratingChanges?contestId=2102)
-          1.   这个是查找某场比赛所有参赛成员的rating变化，但是怎么筛指定人员还想不出，可能要在代码中实现
+     1.   这个是查找某场比赛所有参赛成员的rating变化，但是怎么筛指定人员还想不出，可能要在代码中实现
 
 
 

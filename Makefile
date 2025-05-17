@@ -2,9 +2,9 @@ CC = gcc
 CFLAGS = -ID:/Develop/VScode/curl/include -ID:/Develop/VScode/cJSON
 LDFLAGS = -LD:/Develop/VScode/curl/lib -LD:/Develop/VScode/cJSON
 LIBS = -lcurl -lcjson -lws2_32 -lssl -lcrypto -lz
-TARGET = crawler.exe
+TARGET = jspra.exe	##
 
-SRC = src/main.c
+SRC = src/prjs.c		##
  
 all: $(TARGET)
 

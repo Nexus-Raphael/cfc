@@ -4,6 +4,8 @@
 #include<stdlib.h>
 int main(){
     cJSON* root =cJSON_CreateObject();
+    cJSON* wit=cJSON_CreateObject();
+    cJSON_AddItemToObject(root,"new",wit);//返回值是true和false
     cJSON_AddStringToObject(root,"str1","你好，巴巴尔！");
     cJSON* key=cJSON_AddNumberToObject(root,"num",586);
     char *str=cJSON_Print(root);

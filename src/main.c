@@ -109,7 +109,7 @@ void yearlyCFlist(void) {
 
         time_t start_time = (time_t)start->valuedouble;
         struct tm *tm_info = localtime(&start_time);
-        if ((tm_info->tm_year + 1900) != year_to_filter) continue;
+        if ((tm_info->tm_year + 1900) != year_to_filter) break;
 
         char time_buf[64];
         strftime(time_buf, sizeof(time_buf), "%Y-%m-%d %H:%M:%S", tm_info);

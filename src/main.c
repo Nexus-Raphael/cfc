@@ -60,11 +60,11 @@ void oneinfo(){
     return;
 }
 
-void yearlyCFlist(void) {
-    // 设置本地化，确保时间格式正常
+void yearlyCFlist() {
+    int year_to_filter=2025;
     setlocale(LC_TIME, "");
 
-    // 获取 JSON 数据
+    // 1. 拉下全部比赛 JSON
     char *json = fetch_contest_list();
     if (!json) {
         fprintf(stderr, "获取比赛列表失败。\n");
@@ -77,14 +77,12 @@ void yearlyCFlist(void) {
         fprintf(stderr, "JSON 解析失败：%s\n", cJSON_GetErrorPtr());
         return;
     }
-
     cJSON *status = cJSON_GetObjectItem(root, "status");
     if (!cJSON_IsString(status) || strcmp(status->valuestring, "OK") != 0) {
         fprintf(stderr, "API 返回状态异常。\n");
         cJSON_Delete(root);
         return;
     }
-
     cJSON *result = cJSON_GetObjectItem(root, "result");
     if (!cJSON_IsArray(result)) {
         fprintf(stderr, "比赛列表格式异常。\n");
@@ -92,38 +90,91 @@ void yearlyCFlist(void) {
         return;
     }
 
-    int year_to_filter = 2025;
-    printf("比赛列表（%d 年）：\n", year_to_filter);
+    // 2. 创建 5 个组数组
+    cJSON *out = cJSON_CreateObject();
+    cJSON *arrDiv1 = cJSON_CreateArray();
+    cJSON *arrDiv2 = cJSON_CreateArray();
+    cJSON *arrDiv3 = cJSON_CreateArray();
+    cJSON *arrDiv4 = cJSON_CreateArray();
+    cJSON *arrEdu  = cJSON_CreateArray();
 
-    int count = cJSON_GetArraySize(result);
-    for (int i = 0; i < count; ++i) {
-        cJSON *contest = cJSON_GetArrayItem(result, i);
-        if (!contest) continue;
+    int cnt = cJSON_GetArraySize(result);
+    for (int i = 0; i < cnt; ++i) {
+        cJSON *ct = cJSON_GetArrayItem(result, i);
+        if (!ct) continue;
 
-        cJSON *id = cJSON_GetObjectItem(contest, "id");
-        cJSON *name = cJSON_GetObjectItem(contest, "name");
-        cJSON *phase = cJSON_GetObjectItem(contest, "phase");
-        cJSON *start = cJSON_GetObjectItem(contest, "startTimeSeconds");
+        // 仅处理已结束的比赛
+        cJSON *phase = cJSON_GetObjectItem(ct, "phase");
+        if (!cJSON_IsString(phase) || strcmp(phase->valuestring, "FINISHED") != 0) {
+            continue;
+        }
 
-        if (!id || !name || !phase || !start) continue;
+        // 年份检查：遇到第一个非本年度，提前退出
+        cJSON *start = cJSON_GetObjectItem(ct, "startTimeSeconds");
+        time_t st = (time_t)start->valuedouble;
+        struct tm *t = localtime(&st);
+        if ((t->tm_year + 1900) != year_to_filter) {
+            break;
+        }
 
-        time_t start_time = (time_t)start->valuedouble;
-        struct tm *tm_info = localtime(&start_time);
-        if ((tm_info->tm_year + 1900) != year_to_filter) break;
+        // 构造输出项，只取 id/name/start/division
+        cJSON *item = cJSON_CreateObject();
+        cJSON_AddNumberToObject(item, "id", cJSON_GetObjectItem(ct,"id")->valueint);
+        cJSON_AddStringToObject(item, "name", cJSON_GetObjectItem(ct,"name")->valuestring);
+        char buf[64];
+        strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", t);
+        cJSON_AddStringToObject(item, "startTime", buf);
 
-        char time_buf[64];
-        strftime(time_buf, sizeof(time_buf), "%Y-%m-%d %H:%M:%S", tm_info);
+        // 判断是 Educational 还是 Div.X
+        const char *nm = cJSON_GetObjectItem(ct, "name")->valuestring;
+        char *p = strstr(nm, "(Div. ");
+        if (p) {
+            // p 指向 "(Div. X...)"，直接解析
+            int divnum = 0;
+            if (sscanf(p, "(Div. %d)", &divnum) == 1) {
+                // 正常的 Div 1-4
+                switch (divnum) {
+                    case 1: cJSON_AddItemToArray(arrDiv1, item); break;
+                    case 2: cJSON_AddItemToArray(arrDiv2, item); break;
+                    case 3: cJSON_AddItemToArray(arrDiv3, item); break;
+                    case 4: cJSON_AddItemToArray(arrDiv4, item); break;
+                    default: cJSON_Delete(item); break;
+                }
+            } else {
+                // 虽然有 "(Div. " 字样，但解析失败也丢弃
+                cJSON_Delete(item);
+            }
+        } else if (strstr(nm, "Educational") != NULL) {
+            // 教育赛
+            cJSON_AddItemToArray(arrEdu, item);
+        } else {
+            // 其它不关心的 Round
+            cJSON_Delete(item);
+        }
 
-        printf("ID: %d | %s | 状态: %s | 开始时间: %s\n",
-               id->valueint,
-               name->valuestring,
-               phase->valuestring,
-               time_buf);
     }
+    // 3. 挂到顶层对象
+    cJSON_AddItemToObject(out, "Div1", arrDiv1);
+    cJSON_AddItemToObject(out, "Div2", arrDiv2);
+    cJSON_AddItemToObject(out, "Div3", arrDiv3);
+    cJSON_AddItemToObject(out, "Div4", arrDiv4);
+    cJSON_AddItemToObject(out, "Educational", arrEdu);
 
+    // 4. 写文件
+    char *out_str = cJSON_Print(out);
+    FILE *fp = fopen("web/data.json", "w");
+    if (fp) {
+        fprintf(fp, "%s", out_str);
+        fclose(fp);
+    } else {
+        perror("无法打开 web/data.json");
+    }
+    free(out_str);
+    cJSON_Delete(out);
     cJSON_Delete(root);
-}
 
+    printf("已生成 web/data.json，包含 %d 年比赛分组数据。\n", year_to_filter);
+}
 
 //教练端
 void coach(){

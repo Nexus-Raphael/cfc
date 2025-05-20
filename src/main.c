@@ -221,5 +221,6 @@ int main(){
     }else if(choice==2){
         player();
     }else printf("输入有效值!");
+    system("start \"\" \"web\\etest.html\"");//加了这一行
     return 0;
 }

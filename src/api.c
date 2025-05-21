@@ -82,3 +82,34 @@ char *fetch_contest_list(void) {
     curl_easy_cleanup(curl);
     return s.ptr;
 }
+
+char *fetch_user_cflist(const char *handle){
+    CURL *curl = curl_easy_init();
+    if (!curl) return NULL;
+
+    struct string s = { .ptr = malloc(1), .len = 0 };
+    char errbuf[CURL_ERROR_SIZE] = {0};
+    char url[256];
+
+    snprintf(url,sizeof(url),"https://codeforces.com/api/user.rating?handle=%s",handle);
+
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
+    curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
+    curl_easy_setopt(curl, CURLOPT_CAINFO, "certs/cacert.pem");
+
+    CURLcode res = curl_easy_perform(curl);
+    if (res != CURLE_OK) {
+        fprintf(stderr, "curl error: %s\n", errbuf[0] ? errbuf : curl_easy_strerror(res));
+        if (s.len > 0) {
+            fprintf(stderr, "  >>> raw response:\n%s\n", s.ptr);
+        }
+        free(s.ptr);
+        curl_easy_cleanup(curl);
+        return NULL;
+    }
+
+    curl_easy_cleanup(curl);
+    return s.ptr;
+}

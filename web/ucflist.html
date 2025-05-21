@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Codeforces 用户参赛分类可视化</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <style>
+    #chart { width: 700px; height: 450px; margin-bottom: 20px; }
+    #table-container { width: 700px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      border: 2px solid transparent;
+    }
+    th, td {
+      border: 1px solid transparent;
+      padding: 6px 8px;
+      text-align: left;
+    }
+    th { background-color: #f0f0f0; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h2>Codeforces 用户参赛分类数量（柱状图）</h2>
+  <div id="chart"></div>
+
+  <div id="table-container" class="hidden">
+    <h3 id="table-title"></h3>
+    <table id="info-table">
+      <thead>
+        <tr><th>比赛 ID</th><th>比赛名称</th><th>Rating 更新时间</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    var chart = echarts.init(document.getElementById('chart'));
+
+    fetch('user_data.json')
+      .then(res => res.json())
+      .then(data => {
+        const categories = ['Div1','Div2','Div3','Div4','Educational'];
+        const counts = categories.map(cat => (data[cat] || []).length);
+
+        chart.setOption({
+          title: { text: '用户参与比赛分类统计', left: 'center' },
+          tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
+          grid: { left: '15%', right: '10%', bottom: '10%', containLabel: true },
+          xAxis: { type: 'value', name: '场次' },
+          yAxis: { type: 'category', inverse: true, data: categories, name: '分类' },
+          series: [{
+            name: '参赛场次',
+            type: 'bar',
+            data: counts,
+            barCategoryGap: '50%',
+            itemStyle: { cursor: 'pointer' }
+          }]
+        });
+
+        window.addEventListener('resize', () => chart.resize());
+
+        const borderColors = {
+          'Div1': 'red', 'Div2': 'purple', 'Div3': 'blue',
+          'Div4': 'green', 'Educational': 'gold'
+        };
+
+        let lastCat = null;
+        chart.on('click', function (params) {
+          const cat = params.name;
+          const container = document.getElementById('table-container');
+          const tbl = document.getElementById('info-table');
+
+          if (cat === lastCat && !container.classList.contains('hidden')) {
+            container.classList.add('hidden');
+            lastCat = null;
+            return;
+          }
+
+          lastCat = cat;
+          const list = data[cat] || [];
+
+          document.getElementById('table-title').textContent = cat + ' 比赛列表';
+          const color = borderColors[cat] || 'black';
+          tbl.style.borderColor = color;
+          Array.from(tbl.querySelectorAll('th,td'))
+            .forEach(cell => cell.style.borderColor = color);
+
+          const tbody = tbl.querySelector('tbody');
+          tbody.innerHTML = '';
+          if (list.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="3">暂无比赛数据</td></tr>';
+          } else {
+            list.forEach(item => {
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.name}</td>
+                <td>${item.ratingUpdateTime}</td>
+              `;
+              tbody.appendChild(tr);
+            });
+          }
+
+          container.classList.remove('hidden');
+          container.scrollIntoView({ behavior: 'smooth' });
+        });
+      })
+      .catch(err => console.error('加载 user_data.json 失败:', err));
+  </script>
+</body>
+</html>
+<!-- "startTimeSeconds": 1747492500, -->
+ <!-- "ratingUpdateTimeSeconds": 1747500600, -->

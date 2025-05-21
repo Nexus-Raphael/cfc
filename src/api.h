@@ -5,4 +5,5 @@
 // 调用者需 free 返回的 char*
 char *fetch_user_info(const char *handle);
 char *fetch_contest_list();
+char *fetch_user_cflist();
 #endif // API_H

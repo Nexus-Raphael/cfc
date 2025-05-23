@@ -1,166 +1,192 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <title>Codeforces 用户参赛进化图</title>
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5"></script>
+  <meta charset="UTF-8" />
+  <title>Codeforces 用户参赛进化可视化</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
     }
     #chart {
-      width: 1440px;
-      height: 900px;
+      width: 1260px;
+      height: 810px;
       margin-bottom: 20px;
     }
-    #detail-container {
-      width: 1440px;
-      margin-top: 20px;
+    #table-container {
+      width: 1260px;
+      font-family: sans-serif;
     }
     table {
-      border-collapse: collapse;
       width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
     }
     th, td {
-      padding: 8px;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
+      padding: 6px 10px;
+      text-align: center;
     }
     th {
-      background: #f0f0f0;
+      background-color: #f0f0f0;
     }
     .hidden {
       display: none;
     }
+    .rank-title {
+      text-align: center;
+      font-size: 20px;
+      margin: 16px 0 8px;
+    }
   </style>
 </head>
 <body>
-  <h2>Codeforces 用户参赛 Rating 变化</h2>
+  <h2>Codeforces 用户参赛进化（Rating 与头衔变化）</h2>
   <div id="chart"></div>
 
-  <div id="detail-container" class="hidden">
-    <h3 id="detail-title"></h3>
-    <table id="detail-table">
-      <thead>
-        <tr>
-          <th>排名</th><th>旧 Rating</th><th>新 Rating</th>
-          <th>头衔变化</th><th>题号</th><th>满分</th><th>得分</th>
-        </tr>
-      </thead>
+  <div id="table-container" class="hidden">
+    <div class="rank-title" id="table-title"></div>
+    <table id="info-table">
+      <thead></thead>
       <tbody></tbody>
     </table>
   </div>
 
   <script>
-    const colors = {
-      gray: '#808080',
-      green: '#008000',
-      cyan: '#03A89E',
-      blue: '#0000FF',
-      purple: '#AA00AA',
-      orange: '#FF8C00',
-      red: '#FF0000',
-      yellow: '#FFD700'
-    };
-
-    function getColorByRank(rank) {
-      if (rank === "Legendary Grandmaster") return colors.red;
-      if (rank === "International Grandmaster") return colors.orange;
-      if (rank === "Grandmaster") return colors.orange;
-      if (rank === "International Master") return colors.purple;
-      if (rank === "Master") return colors.purple;
-      if (rank === "Candidate Master") return colors.blue;
-      if (rank === "Expert") return colors.cyan;
-      if (rank === "Specialist") return colors.green;
-      if (rank === "Pupil") return colors.green;
-      if (rank === "Newbie") return colors.gray;
-      return '#000';
+    // Map Codeforces 头衔到颜色
+    function getColorByRank(rankName) {
+      const map = {
+        'newbie': '#808080', 'pupil': '#008000', 'specialist': '#03a89e',
+        'expert': '#0000ff', 'candidate master': '#aa00aa',
+        'master': '#ff8c00', 'international master': '#ff8c00',
+        'grandmaster': '#ff0000', 'international grandmaster': '#ff0000',
+        'legendary grandmaster': '#ff0000'
+      };
+      return map[rankName.toLowerCase()] || '#000';
     }
 
+    // 加载用户进化数据
     fetch('user_evolution.json')
       .then(res => res.json())
       .then(data => {
+        // 构造图表数据
+        const pointInfo = data.map(d => ({
+          value: [d.ratingUpdateTime * 1000, d.newRating],
+          contestId: d.contestId,
+          contestName: d.contestName,
+          oldRating: d.oldRating,
+          newRating: d.newRating,
+          rankBefore: d.rankBefore,
+          rankAfter: d.rankAfter
+        }));
+
         const chart = echarts.init(document.getElementById('chart'));
-
-        const xData = data.map(d => d.contestName + ' (#' + d.contestId + ')');
-        const yData = data.map(d => d.newRating);
-
-        const rankNames = data.map(d => d.rankAfter);
-        const colorsByRank = rankNames.map(getColorByRank);
-
         chart.setOption({
-          title: { text: 'Rating 进化折线图', left: 'center' },
+          title: { text: 'Rating 变化折线图（时间轴）', left: 'center' },
           tooltip: {
-            trigger: 'axis',
-            formatter: function (params) {
-              const i = params[0].dataIndex;
-              const d = data[i];
+            trigger: 'item',
+            formatter: params => {
+              const d = params.data;
+              const time = new Date(d.value[0]);
+              const ym = time.getFullYear() + '-' +
+                         String(time.getMonth() + 1).padStart(2, '0');
               return `
-<b>${d.contestName}</b><br/>
-ID: ${d.contestId}<br/>
-Rating: ${d.oldRating} → ${d.newRating}<br/>
-头衔: <span style="color:${getColorByRank(d.rankAfter)}">${d.rankBefore}</span> → <span style="color:${getColorByRank(d.rankAfter)}">${d.rankAfter}</span>
+                ${ym}<br/>
+                <b>${d.contestName}</b><br/>
+                ${d.rankBefore} (${d.oldRating}) → ${d.rankAfter} (${d.newRating})
               `;
             }
           },
           xAxis: {
-            type: 'category',
-            data: xData,
-            axisLabel: { rotate: 45, interval: 0 }
+            type: 'time',
+            name: '时间',
+            axisLabel: {
+              formatter: value => {
+                const date = new Date(value);
+                const y = date.getFullYear();
+                const m = String(date.getMonth() + 1).padStart(2, '0');
+                return `${y}-${m}`;
+              },
+              rotate: 45
+            }
           },
           yAxis: {
             type: 'value',
-            name: 'Rating'
+            name: 'Rating',
+            min: value => value.min - 100
           },
           series: [{
             name: 'Rating',
             type: 'line',
-            data: yData,
+            data: pointInfo,
             symbol: 'circle',
             symbolSize: 10,
-            lineStyle: { width: 2, color: 'red' },
-            itemStyle: { color: 'deepskyblue' },
+            lineStyle: { color: 'red' },
+            itemStyle: { color: 'skyblue' },
             emphasis: {
               itemStyle: {
-                borderColor: '#000',
-                borderWidth: 2
+                borderColor: 'darkblue',
+                borderWidth: 3
               }
-            },
-            label: { show: false }
+            }
           }]
         });
 
-        window.addEventListener('resize', () => chart.resize());
+        // 点击节点展开详情表格
+        chart.on('click', params => {
+          const d = params.data;
+          const match = data.find(x => x.contestId === d.contestId);
+          if (!match) return;
 
-        chart.on('click', function (params) {
-          const i = params.dataIndex;
-          const d = data[i];
+          const container = document.getElementById('table-container');
+          const title = document.getElementById('table-title');
+          const table = document.getElementById('info-table');
+          const thead = table.querySelector('thead');
+          const tbody = table.querySelector('tbody');
 
-          const table = document.getElementById('detail-table').querySelector('tbody');
-          table.innerHTML = '';
+          title.textContent = `${match.contestName} (#${match.contestId})`;
 
-          const title = document.getElementById('detail-title');
-          title.innerHTML = `比赛详情：${d.contestName} (#${d.contestId})`;
+          // 构造表头
+          const probHeaders = match.problems.map(p =>
+            typeof p === 'string'
+              ? `<th>${p}(AC)</th>`
+              : `<th>${p.index}(${p.maxPoints})</th>`
+          ).join('');
+          thead.innerHTML = `<tr>
+            <th>rank</th>${probHeaders}
+            <th>Title</th><th>Rating</th>
+          </tr>`;
 
-          const probs = d.problems || [];
-          probs.forEach(p => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-              <td>${d.rank}</td>
-              <td>${d.oldRating}</td>
-              <td>${d.newRating}</td>
-              <td><span style="color:${getColorByRank(d.rankAfter)}">${d.rankBefore} → ${d.rankAfter}</span></td>
-              <td>${p.index}</td>
-              <td>${p.maxPoints || '-'}</td>
-              <td>${p.points || '-'}</td>
-            `;
-            table.appendChild(row);
-          });
+          // 构造表格内容单行
+          const probCells = match.problems.map(p =>
+            typeof p === 'string'
+              ? `<td>✔️</td>`
+              : `<td>${p.points}</td>`
+          ).join('');
+          const beforeColor = getColorByRank(match.rankBefore);
+          const afterColor = getColorByRank(match.rankAfter);
+          const titleCell = `<td>
+            <span style="color:${beforeColor}">${match.rankBefore}</span>
+            → 
+            <span style="color:${afterColor}">${match.rankAfter}</span>
+          </td>`;
+          const ratingCell = `<td>${match.oldRating} → ${match.newRating}</td>`;
 
-          document.getElementById('detail-container').classList.remove('hidden');
-          document.getElementById('detail-container').scrollIntoView({ behavior: 'smooth' });
+          tbody.innerHTML = `<tr>
+            <td>${match.rank}</td>
+            ${probCells}
+            ${titleCell}
+            ${ratingCell}
+          </tr>`;
+
+          container.classList.remove('hidden');
+          container.scrollIntoView({ behavior: 'smooth' });
         });
-      });
+
+        window.addEventListener('resize', () => chart.resize());
+      })
+      .catch(err => console.error('数据加载失败:', err));
   </script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 #include <curl/curl.h>
 #include <stdlib.h>
 #include <string.h>
+#include <curl/multi.h>
 
 struct string {
     char *ptr;
@@ -124,7 +125,7 @@ char *fetch_contest_standings(const char *handle, int contestId) {
 
     // 构造请求 URL，传入比赛 ID 和用户名
     snprintf(url, sizeof(url),
-        "https://codeforces.com/api/contest.standings?contestId=%d&handles=%s&showUnofficial=false",
+        "https://codeforces.com/api/contest.standings?contestId=%d&handles=%s&showUnofficial=true",
         contestId, handle);
 
     curl_easy_setopt(curl, CURLOPT_URL, url);
@@ -146,4 +147,57 @@ char *fetch_contest_standings(const char *handle, int contestId) {
 
     curl_easy_cleanup(curl);
     return s.ptr;
+}
+
+char **fetch_contest_standings_multi(const char *handle, const int *contestIds, int count) {
+    if (count <= 0) return NULL;
+
+    CURLM *multi = curl_multi_init();
+    if (!multi) return NULL;
+
+    CURL **easys = calloc(count, sizeof(CURL*));
+    struct string *buffers = calloc(count, sizeof(struct string));
+    char **responses = calloc(count, sizeof(char*));
+
+    for (int i = 0; i < count; i++) {
+        buffers[i].ptr = malloc(1);  // 初始化 buffer
+        buffers[i].len = 0;
+
+        easys[i] = curl_easy_init();
+        if (!easys[i]) continue;
+
+        char *url = malloc(512);
+        snprintf(url, 512,
+                 "https://codeforces.com/api/contest.standings?contestId=%d&handles=%s&showUnofficial=false",
+                 contestIds[i], handle);
+
+        curl_easy_setopt(easys[i], CURLOPT_URL, url);
+        curl_easy_setopt(easys[i], CURLOPT_WRITEFUNCTION, write_callback);
+        curl_easy_setopt(easys[i], CURLOPT_WRITEDATA, &buffers[i]);
+        curl_easy_setopt(easys[i], CURLOPT_CAINFO, "certs/cacert.pem");
+
+        curl_multi_add_handle(multi, easys[i]);
+        free(url);  // curl 会拷贝 URL，不需要保存
+    }
+
+    int still_running;
+    curl_multi_perform(multi, &still_running);
+    while (still_running) {
+        int numfds;
+        curl_multi_wait(multi, NULL, 0, 1000, &numfds);
+        curl_multi_perform(multi, &still_running);
+    }
+
+    for (int i = 0; i < count; i++) {
+        curl_multi_remove_handle(multi, easys[i]);
+        curl_easy_cleanup(easys[i]);
+
+        responses[i] = buffers[i].ptr;  // 提取响应字符串
+    }
+
+    free(easys);
+    free(buffers);  // 仅释放 struct string 数组本身，里面的 .ptr 是有效数据
+    curl_multi_cleanup(multi);
+
+    return responses;
 }

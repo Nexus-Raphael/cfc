@@ -5,6 +5,7 @@
 #include <cJSON.h>
 #include <time.h>
 #include <locale.h>
+#include <stdbool.h>
 
 char handle[30];
 
@@ -307,6 +308,7 @@ void patiCFlist() {
     upload_web_and_open("http://121.196.195.201/web/ucflist.html");
 
 }
+
 void userevo() {
     char *json_list = fetch_user_cflist(handle);
     if (!json_list) {
@@ -434,29 +436,44 @@ void userevo() {
         cJSON_AddStringToObject(obj, "rankAfter", get_rank_name(newRating));
 
         cJSON *problems_arr = cJSON_CreateArray();
+        bool isSimpleContest = strstr(contestName, "Div. 3") || strstr(contestName, "Div. 4") || strstr(contestName, "Educational");
         for (int k = 0; k < problem_count; k++) {
             cJSON *problem = cJSON_GetArrayItem(problems, k);
             if (!problem) continue;
 
-            cJSON *prob_obj = cJSON_CreateObject();
             const char *index = cJSON_GetObjectItem(problem, "index")->valuestring;
-            cJSON_AddStringToObject(prob_obj, "index", index);
-
-            cJSON *p_pts = cJSON_GetObjectItem(problem, "points");
-            int maxPoints = (p_pts && cJSON_IsNumber(p_pts)) ? (int)p_pts->valuedouble : 0;
-            cJSON_AddNumberToObject(prob_obj, "maxPoints", maxPoints);
 
             cJSON *pr = (problemResults && k < cJSON_GetArraySize(problemResults)) ? cJSON_GetArrayItem(problemResults, k) : NULL;
-            int userPoints = 0;
+
+            if (isSimpleContest) {
+            // 只记录 AC 的题目 index
+            bool accepted = false;
             if (pr) {
                 cJSON *pr_pts = cJSON_GetObjectItem(pr, "points");
-                if (pr_pts && cJSON_IsNumber(pr_pts)) {
-                    userPoints = (int)pr_pts->valuedouble;
-                }
+                accepted = (pr_pts && cJSON_IsNumber(pr_pts) && pr_pts->valuedouble > 0.0);
             }
-            cJSON_AddNumberToObject(prob_obj, "points", userPoints);
+            if (accepted) {
+                cJSON_AddItemToArray(problems_arr, cJSON_CreateString(index));
+            }
+            } else {
+                // 保留详细得分信息
+                cJSON *prob_obj = cJSON_CreateObject();
+                cJSON_AddStringToObject(prob_obj, "index", index);
 
-            cJSON_AddItemToArray(problems_arr, prob_obj);
+                cJSON *p_pts = cJSON_GetObjectItem(problem, "points");
+                int maxPoints = (p_pts && cJSON_IsNumber(p_pts)) ? (int)p_pts->valuedouble : 0;
+                cJSON_AddNumberToObject(prob_obj, "maxPoints", maxPoints);
+
+                int userPoints = 0;
+                if (pr) {
+                    cJSON *pr_pts = cJSON_GetObjectItem(pr, "points");
+                    if (pr_pts && cJSON_IsNumber(pr_pts)) {
+                        userPoints = (int)pr_pts->valuedouble;
+                    }
+                }
+                cJSON_AddNumberToObject(prob_obj, "points", userPoints);
+                cJSON_AddItemToArray(problems_arr, prob_obj);
+            }
         }
 
         cJSON_AddItemToObject(obj, "problems", problems_arr);

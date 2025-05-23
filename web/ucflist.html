@@ -30,7 +30,7 @@
     <h3 id="table-title"></h3>
     <table id="info-table">
       <thead>
-        <tr><th>比赛 ID</th><th>比赛名称</th><th>Rating 更新时间</th></tr>
+        <tr><th>比赛 ID</th><th>比赛名称</th><th>比赛开始时间</th></tr>
       </thead>
       <tbody></tbody>
     </table>
@@ -109,7 +109,7 @@
               tr.innerHTML = `
                 <td>${item.id}</td>
                 <td>${item.name}</td>
-                <td>${item.ratingUpdateTime}</td>
+                <td>${item.starttime}</td>
               `;
               tbody.appendChild(tr);
             });
@@ -121,5 +121,6 @@
       })
       .catch(err => console.error('加载 user_data.json 失败:', err));
   </script>
+
 </body>
 </html>

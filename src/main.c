@@ -36,6 +36,22 @@ void upload_web_and_open(const char *url_to_open) {
 }
 
 
+time_t upt(time_t original) {
+
+    struct tm *tm_info = localtime(&original);
+
+ 
+    tm_info->tm_mday -= 1;
+
+    tm_info->tm_hour = 22;
+    tm_info->tm_min = 35;
+    tm_info->tm_sec = 0;
+
+    time_t new_time = mktime(tm_info);
+
+    return new_time;
+}
+
 //选手端---查询个人信息
 void oneinfo(){
     // 1. 获取 JSON 字符串
@@ -87,6 +103,8 @@ void oneinfo(){
     return;
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//选手端---查询年度比赛列表
 void yearlyCFlist() {
     int year_to_filter=2025;
     setlocale(LC_TIME, "");
@@ -205,6 +223,8 @@ void yearlyCFlist() {
 
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//选手端---查询参与比赛列表
 void patiCFlist() {
     char *json = fetch_user_cflist(handle);
     if (!json) {
@@ -248,7 +268,8 @@ void patiCFlist() {
 
         int cid = cJSON_GetObjectItem(entry, "contestId")->valueint;
         const char *cname = cJSON_GetObjectItem(entry, "contestName")->valuestring;
-        time_t rating_time = (time_t)cJSON_GetObjectItem(entry, "ratingUpdateTimeSeconds")->valueint;
+        time_t rating_time = (time_t)cJSON_GetObjectItem(entry, "ratingUpdateTimeSeconds")->valueint;//需要转换为UTC+8前一天的22：35
+        rating_time=upt(rating_time);
         struct tm *t = localtime(&rating_time);
 
         // 构造输出项
@@ -258,7 +279,7 @@ void patiCFlist() {
 
         char buf[64];
         strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", t);
-        cJSON_AddStringToObject(item, "ratingUpdateTime", buf);
+        cJSON_AddStringToObject(item, "starttime", buf);
 
         // 按类别分类（Educational 或 Div. X）
         const char *nm = cname;
@@ -309,6 +330,14 @@ void patiCFlist() {
 
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//选手端---用户出勤率查询
+void atrate(){
+    
+}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//选手端---用户成长曲线
 void userevo() {
     char *json_list = fetch_user_cflist(handle);
     if (!json_list) {
@@ -497,182 +526,21 @@ void userevo() {
     cJSON_Delete(out_arr);
     cJSON_Delete(root);
 }
-void userevo0() {
-    char *json_list = fetch_user_cflist(handle);
-    if (!json_list) {
-        fprintf(stderr, "获取用户 %s 的比赛列表失败。\n", handle);
-        return;
-    }
 
-    cJSON *root = cJSON_Parse(json_list);
-    free(json_list);
-    if (!root) {
-        fprintf(stderr, "JSON 解析失败：%s\n", cJSON_GetErrorPtr());
-        return;
-    }
-
-    cJSON *status = cJSON_GetObjectItem(root, "status");
-    if (!cJSON_IsString(status) || strcmp(status->valuestring, "OK") != 0) {
-        fprintf(stderr, "API 返回状态异常。\n");
-        cJSON_Delete(root);
-        return;
-    }
-
-    cJSON *result = cJSON_GetObjectItem(root, "result");
-    if (!cJSON_IsArray(result)) {
-        fprintf(stderr, "比赛列表格式异常。\n");
-        cJSON_Delete(root);
-        return;
-    }
-
-    int count = cJSON_GetArraySize(result);
-    cJSON *out_arr = cJSON_CreateArray();
-    //----------------------------
-    if (count == 0) { // 新增检查
-        fprintf(stderr, "错误：用户 %s 未参加任何比赛或用户名无效！\n", handle);
-        cJSON_Delete(root);
-        return;
-    }
-    printf("找到 %d 场参赛记录\n", count);
-    //----------------------------
-    for (int i = 0; i < count; i++) {
-        printf("处理第 %d/%d 场比赛...\n", i+1, count);
-        cJSON *entry = cJSON_GetArrayItem(result, i);
-        if (!entry) continue;
-
-        int contestId = cJSON_GetObjectItem(entry, "contestId")->valueint;
-        int oldRating = cJSON_GetObjectItem(entry, "oldRating")->valueint;
-        int newRating = cJSON_GetObjectItem(entry, "newRating")->valueint;
-        const char *contestName = cJSON_GetObjectItem(entry, "contestName")->valuestring;
-        int ratingUpdateTime = cJSON_GetObjectItem(entry, "ratingUpdateTimeSeconds")->valueint;
-
-        // 调用比赛详细数据接口
-        char *json_standings = fetch_contest_standings(handle, contestId);
-        if (!json_standings) {
-            fprintf(stderr, "获取比赛 %d 详细数据失败，跳过...\n", contestId);
-            continue;
-        }
-
-        cJSON *standings_root = cJSON_Parse(json_standings);
-        free(json_standings);
-        if (!standings_root) {
-            fprintf(stderr, "比赛 %d 详细数据 JSON 解析失败，跳过...\n", contestId);
-            continue;
-        }
-
-        cJSON *status2 = cJSON_GetObjectItem(standings_root, "status");
-        if (!cJSON_IsString(status2) || strcmp(status2->valuestring, "OK") != 0) {
-            fprintf(stderr, "比赛 %d API返回异常，跳过...\n", contestId);
-            cJSON_Delete(standings_root);
-            continue;
-        }
-
-        cJSON *res2 = cJSON_GetObjectItem(standings_root, "result");
-        if (!res2) {
-            fprintf(stderr, "比赛 %d 结果缺失，跳过...\n", contestId);
-            cJSON_Delete(standings_root);
-            continue;
-        }
-
-        cJSON *contest = cJSON_GetObjectItem(res2, "contest");
-        cJSON *problems = cJSON_GetObjectItem(res2, "problems");
-        cJSON *rows = cJSON_GetObjectItem(res2, "rows");
-        if (!contest || !problems || !rows) {
-            fprintf(stderr, "比赛 %d 关键信息缺失，跳过...\n", contestId);
-            cJSON_Delete(standings_root);
-            continue;
-        }
-
-        // 找到当前用户所在行
-        int rows_count = cJSON_GetArraySize(rows);
-        cJSON *user_row = NULL;
-        for (int j = 0; j < rows_count; j++) {
-            cJSON *row = cJSON_GetArrayItem(rows, j);
-            cJSON *party = cJSON_GetObjectItem(row, "party");
-            if (!party) continue;
-
-            cJSON *members = cJSON_GetObjectItem(party, "members");
-            if (!members || cJSON_GetArraySize(members) == 0) continue;
-
-            cJSON *member0 = cJSON_GetArrayItem(members, 0);
-            cJSON *m_handle = cJSON_GetObjectItem(member0, "handle");
-            if (m_handle && strcmp(m_handle->valuestring, handle) == 0) {
-                user_row = row;
-                break;
-            }
-        }
-
-        if (!user_row) {
-            fprintf(stderr, "比赛 %d 未找到用户排名，跳过...\n", contestId);
-            cJSON_Delete(standings_root);
-            continue;
-        }
-
-        int rank = cJSON_GetObjectItem(user_row, "rank")->valueint;
-        cJSON *problemResults = cJSON_GetObjectItem(user_row, "problemResults");
-        int problem_count = cJSON_GetArraySize(problems);
-
-        // 构造比赛对象
-        cJSON *obj = cJSON_CreateObject();
-        cJSON_AddNumberToObject(obj, "contestId", contestId);
-        cJSON_AddStringToObject(obj, "contestName", contestName);
-        cJSON_AddNumberToObject(obj, "ratingUpdateTime", ratingUpdateTime);
-        cJSON_AddNumberToObject(obj, "rank", rank);
-
-        // 头衔变化
-        cJSON_AddStringToObject(obj, "rankBefore", get_rank_name(oldRating));
-        cJSON_AddStringToObject(obj, "rankAfter", get_rank_name(newRating));
-
-        // rating变化
-        cJSON_AddNumberToObject(obj, "oldRating", oldRating);
-        cJSON_AddNumberToObject(obj, "newRating", newRating);
-
-        // 题目得分数组
-        cJSON *problems_arr = cJSON_CreateArray();
-        for (int k = 0; k < problem_count; k++) {
-            cJSON *problem = cJSON_GetArrayItem(problems, k);
-            cJSON *pr = cJSON_GetArrayItem(problemResults, k);
-
-            cJSON *prob_obj = cJSON_CreateObject();
-            cJSON_AddStringToObject(prob_obj, "index", cJSON_GetObjectItem(problem, "index")->valuestring);
-            cJSON_AddNumberToObject(prob_obj, "maxPoints", (int)(cJSON_GetObjectItem(problem, "points")->valuedouble));
-            cJSON_AddNumberToObject(prob_obj, "points", (int)(cJSON_GetObjectItem(pr, "points")->valuedouble));
-
-            cJSON_AddItemToArray(problems_arr, prob_obj);
-        }
-        cJSON_AddItemToObject(obj, "problems", problems_arr);
-
-        cJSON_AddItemToArray(out_arr, obj);
-
-        cJSON_Delete(standings_root);
-    }
-
-    // 写出最终JSON文件
-    char *out_str = cJSON_Print(out_arr);
-    FILE *fp = fopen("web/user_evolution.json", "w");
-    if (fp) {
-        fprintf(fp, "%s", out_str);
-        fclose(fp);
-        printf("已生成用户参赛进化数据：web/user_evolution.json\n");
-    } else {
-        perror("写入文件失败");
-    }
-
-    free(out_str);
-    cJSON_Delete(out_arr);
-    cJSON_Delete(root);
-}
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //教练端
 void coach(){
 
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 //选手端
 void player(){
     printf("输入用户名(handle):\n");
     scanf("%s",handle);
-    printf("请选择功能(输入数字):\n1. 查询个人信息 \n2. 查询本年度比赛列表\n3. 查询你参加过的比赛列表\n4. 查询上次比赛情况\n5. 查询所有比赛情况\n");
+    printf("请选择功能(输入数字):\n1. 查询个人信息 \n2. 查询本年度比赛列表\n3. 查询你参加过的比赛列表\n4. 查询出勤率\n5. 查询所有比赛情况\n");
     int tem=0;
     scanf("%d",&tem);
     switch (tem)
@@ -687,10 +555,10 @@ void player(){
         patiCFlist();
         break;
     case 4:
-        userevo();
+        atrate();
         break;
     case 5:
-        /* code */
+        userevo();
         break;
 
     default:
@@ -699,6 +567,8 @@ void player(){
     }
 }
 
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//主函数
 int main(){
     printf("请选择你的身份(输入1或2):\n1. 教练 \n2. 选手\n");
     int choice=0;

@@ -9,6 +9,14 @@
 
 char handle[30];
 
+typedef struct {
+    int year;
+    int month;
+    int total;     // 有效比赛总数
+    int attended;  // 用户参加的有效比赛数
+} Attendance;
+
+
 const char* get_rank_name(int rating) {
     if (rating < 1200) return "Newbie";
     if (rating < 1400) return "Pupil";
@@ -333,9 +341,171 @@ void patiCFlist() {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //选手端---用户出勤率查询
-void atrate(){
-    
+void calcAttendance(void) {
+    // 1. 拉取 contest.list 和 user.rating
+    char *contest_json = fetch_contest_list();
+    if (!contest_json) {
+        fprintf(stderr, "Failed to fetch contest list\n");
+        return;
+    }
+    char *user_json = fetch_user_cflist(handle);
+    if (!user_json) {
+        fprintf(stderr, "Failed to fetch user rating history\n");
+        free(contest_json);
+        return;
+    }
+
+    // 2. 解析 JSON
+    cJSON *cj_contests = cJSON_Parse(contest_json);
+    cJSON *cj_user     = cJSON_Parse(user_json);
+    free(contest_json);
+    free(user_json);
+    if (!cj_contests || !cj_user) {
+        fprintf(stderr, "Failed to parse JSON\n");
+        cJSON_Delete(cj_contests);
+        cJSON_Delete(cj_user);
+        return;
+    }
+    cJSON *resultA = cJSON_GetObjectItem(cj_contests, "result");
+    cJSON *resultB = cJSON_GetObjectItem(cj_user,    "result");
+    if (!cJSON_IsArray(resultA) || !cJSON_IsArray(resultB)) {
+        fprintf(stderr, "Unexpected JSON structure\n");
+        goto cleanup;
+    }
+
+    // 3. 找到用户第一场比赛的年月
+    cJSON *firstRating = cJSON_GetArrayItem(resultB, 0);
+    int first_cid = cJSON_GetObjectItem(firstRating, "contestId")->valueint;
+    time_t first_ts = 0;
+    cJSON *contest;
+    cJSON_ArrayForEach(contest, resultA) {
+        cJSON *cj_id = cJSON_GetObjectItem(contest, "id");
+        if (cj_id && cj_id->valueint == first_cid) {
+            first_ts = (time_t)cJSON_GetObjectItem(contest, "startTimeSeconds")->valuedouble;
+            break;
+        }
+    }
+    if (first_ts == 0) {
+        fprintf(stderr, "Cannot find first contest in contest.list\n");
+        goto cleanup;
+    }
+    struct tm *ft = localtime(&first_ts);
+    int first_year  = ft->tm_year + 1900;
+    int first_month = ft->tm_mon + 1;
+
+    // 4. 准备 attendance 对象
+    cJSON *attendance = cJSON_CreateObject();
+
+    // 5. 第一次遍历 contest.list：统计每月 total，并在到达 first_year-first_month 之前 break
+    cJSON_ArrayForEach(contest, resultA) {
+        cJSON *cj_ts = cJSON_GetObjectItem(contest, "startTimeSeconds");
+        if (!cj_ts || !cJSON_IsNumber(cj_ts)) continue;
+        time_t ts = (time_t)cj_ts->valuedouble;
+        struct tm *t = localtime(&ts);
+        int y = t->tm_year + 1900;
+        int m = t->tm_mon + 1;
+        // 如果早于用户第一次比赛当月，就退出循环
+        if (y < first_year || (y == first_year && m < first_month)) {
+            break;
+        }
+        // 判断是否是有效比赛
+        cJSON *cj_name = cJSON_GetObjectItem(contest, "name");
+        if (!cj_name || !cJSON_IsString(cj_name)) continue;
+        const char *name = cj_name->valuestring;
+        if (!(strstr(name, "Div. 1") ||
+              strstr(name, "Div. 2") ||
+              strstr(name, "Div. 3") ||
+              strstr(name, "Div. 4") ||
+              strstr(name, "Educational")))
+            continue;
+        // 构造 monthKey
+        char monthKey[8];
+        snprintf(monthKey, sizeof(monthKey), "%04d-%02d", y, m);
+        // 更新或创建条目
+        cJSON *mo = cJSON_GetObjectItem(attendance, monthKey);
+        if (!mo) {
+            mo = cJSON_CreateObject();
+            cJSON_AddNumberToObject(mo, "total", 1);
+            cJSON_AddNumberToObject(mo, "attended", 0);
+            cJSON_AddItemToObject(attendance, monthKey, mo);
+        } else {
+            cJSON *cj_total = cJSON_GetObjectItem(mo, "total");
+            cj_total->valuedouble += 1;
+        }
+    }
+
+    // 6. 第二次遍历 user.rating：统计每月 attended
+    cJSON *rating;
+    cJSON_ArrayForEach(rating, resultB) {
+        cJSON *cj_cid = cJSON_GetObjectItem(rating, "contestId");
+        if (!cj_cid || !cJSON_IsNumber(cj_cid)) continue;
+        int cid = cj_cid->valueint;
+        // 在 contest.list 里找对应比赛
+        cJSON *found = NULL;
+        cJSON_ArrayForEach(contest, resultA) {
+            cJSON *cj_id = cJSON_GetObjectItem(contest, "id");
+            if (cj_id && cj_id->valueint == cid) {
+                found = contest;
+                break;
+            }
+        }
+        if (!found) continue;
+        // 同样判断有效性
+        cJSON *cj_name = cJSON_GetObjectItem(found, "name");
+        const char *name = cj_name ? cj_name->valuestring : "";
+        if (!(strstr(name, "Div. 1") ||
+              strstr(name, "Div. 2") ||
+              strstr(name, "Div. 3") ||
+              strstr(name, "Div. 4") ||
+              strstr(name, "Educational")))
+            continue;
+        // 拿 startTimeSeconds
+        time_t ts = (time_t)cJSON_GetObjectItem(found, "startTimeSeconds")->valuedouble;
+        struct tm *t = localtime(&ts);
+        char monthKey[8];
+        snprintf(monthKey, sizeof(monthKey), "%04d-%02d",
+                 t->tm_year + 1900, t->tm_mon + 1);
+        cJSON *mo = cJSON_GetObjectItem(attendance, monthKey);
+        if (mo) {
+            cJSON *cj_att = cJSON_GetObjectItem(mo, "attended");
+            cj_att->valuedouble += 1;
+        }
+    }
+
+    // 7. 生成最终 JSON，并写率 rate
+    cJSON *out = cJSON_CreateObject();
+    cJSON *monthObj;
+    cJSON_ArrayForEach(monthObj, attendance) {
+        const char *key = monthObj->string;
+        double total    = cJSON_GetObjectItem(monthObj, "total")->valuedouble;
+        double attended = cJSON_GetObjectItem(monthObj, "attended")->valuedouble;
+        cJSON *entry = cJSON_CreateObject();
+        cJSON_AddNumberToObject(entry, "total",    total);
+        cJSON_AddNumberToObject(entry, "attended", attended);
+        cJSON_AddNumberToObject(entry, "rate",     total > 0 ? attended/total : 0.0);
+        cJSON_AddItemToObject(out, key, entry);
+    }
+
+    // 8. 输出到 attendance.json
+    char *out_str = cJSON_PrintUnformatted(out);
+    FILE *fp = fopen("attendance.json", "w");
+    if (fp) {
+        fprintf(fp, "%s\n", out_str);
+        fclose(fp);
+    } else {
+        fprintf(stderr, "Failed to open attendance.json\n");
+    }
+    free(out_str);
+
+    // 9. 清理
+    cJSON_Delete(attendance);
+    cJSON_Delete(out);
+
+cleanup:
+    cJSON_Delete(cj_contests);
+    cJSON_Delete(cj_user);
 }
+
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //选手端---用户成长曲线
 void userevo() {
@@ -555,7 +725,7 @@ void player(){
         patiCFlist();
         break;
     case 4:
-        atrate();
+        calcAttendance();
         break;
     case 5:
         userevo();

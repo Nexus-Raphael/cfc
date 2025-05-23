@@ -13,36 +13,32 @@
 			"name":	"Codeforces Round 1014 (Div. 2)",
 			"ratingUpdateTime":	"2025-03-30 00:35:00"
 		}, {
-			"id":	2108,
-			"name":	"Codeforces Round 1022 (Div. 2)",
-			"ratingUpdateTime":	"2025-05-02 00:35:00"
-		}, {
-			"id":	2107,
-			"name":	"Codeforces Round 1023 (Div. 2)",
-			"ratingUpdateTime":	"2025-05-06 00:50:00"
-		}, {
-			"id":	2102,
-			"name":	"Codeforces Round 1024 (Div. 2)",
-			"ratingUpdateTime":	"2025-05-12 01:05:00"
-		}, {
-			"id":	2109,
-			"name":	"Codeforces Round 1025 (Div. 2)",
-			"ratingUpdateTime":	"2025-05-18 00:50:00"
+			"id":	2103,
+			"name":	"Codeforces Round 1019 (Div. 2)",
+			"ratingUpdateTime":	"2025-04-22 00:35:00"
 		}],
 	"Div3":	[{
+			"id":	2072,
+			"name":	"Codeforces Round 1006 (Div. 3)",
+			"ratingUpdateTime":	"2025-02-26 00:50:00"
+		}, {
 			"id":	2074,
 			"name":	"Codeforces Round 1009 (Div. 3)",
 			"ratingUpdateTime":	"2025-03-12 01:05:00"
 		}, {
+			"id":	2091,
+			"name":	"Codeforces Round 1013 (Div. 3)",
+			"ratingUpdateTime":	"2025-03-26 00:50:00"
+		}, {
 			"id":	2093,
 			"name":	"Codeforces Round 1016 (Div. 3)",
 			"ratingUpdateTime":	"2025-04-09 00:50:00"
+		}, {
+			"id":	2106,
+			"name":	"Codeforces Round 1020 (Div. 3)",
+			"ratingUpdateTime":	"2025-04-25 00:50:00"
 		}],
-	"Div4":	[{
-			"id":	2094,
-			"name":	"Codeforces Round 1017 (Div. 4)",
-			"ratingUpdateTime":	"2025-04-14 01:50:00"
-		}],
+	"Div4":	[],
 	"Educational":	[{
 			"id":	2070,
 			"name":	"Educational Codeforces Round 175 (Rated for Div. 2)",
@@ -55,5 +51,9 @@
 			"id":	2086,
 			"name":	"Educational Codeforces Round 177 (Rated for Div. 2)",
 			"ratingUpdateTime":	"2025-04-04 00:35:00"
+		}, {
+			"id":	2104,
+			"name":	"Educational Codeforces Round 178 (Rated for Div. 2)",
+			"ratingUpdateTime":	"2025-04-29 00:35:00"
 		}]
 }

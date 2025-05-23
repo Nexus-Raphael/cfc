@@ -23,7 +23,7 @@
   </style>
 </head>
 <body>
-  <h2>Codeforces 用户参赛分类数量（柱状图）</h2>
+  <h2>Codeforces 用户参赛分类统计（饼图）</h2>
   <div id="chart"></div>
 
   <div id="table-container" class="hidden">
@@ -43,20 +43,31 @@
       .then(res => res.json())
       .then(data => {
         const categories = ['Div1','Div2','Div3','Div4','Educational'];
-        const counts = categories.map(cat => (data[cat] || []).length);
+        const pieData = categories.map(cat => ({
+          name: cat,
+          value: (data[cat] || []).length
+        }));
 
         chart.setOption({
           title: { text: '用户参与比赛分类统计', left: 'center' },
-          tooltip: { trigger: 'axis', axisPointer: { type: 'shadow' } },
-          grid: { left: '15%', right: '10%', bottom: '10%', containLabel: true },
-          xAxis: { type: 'value', name: '场次' },
-          yAxis: { type: 'category', inverse: true, data: categories, name: '分类' },
+          tooltip: { trigger: 'item' },
+          legend: { orient: 'vertical', left: 'left', top: 'center' },
           series: [{
             name: '参赛场次',
-            type: 'bar',
-            data: counts,
-            barCategoryGap: '50%',
-            itemStyle: { cursor: 'pointer' }
+            type: 'pie',
+            radius: '60%',
+            center: ['60%', '50%'],
+            data: pieData,
+            emphasis: {
+              itemStyle: {
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+              }
+            },
+            label: {
+              formatter: '{b}: {c} 场 ({d}%)'
+            }
           }]
         });
 
@@ -112,5 +123,3 @@
   </script>
 </body>
 </html>
-<!-- "startTimeSeconds": 1747492500, -->
- <!-- "ratingUpdateTimeSeconds": 1747500600, -->

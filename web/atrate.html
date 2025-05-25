@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Codeforces 出勤率图表</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    canvas {
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Codeforces 每月出勤率</h2>
+  <canvas id="attendanceChart" width="800" height="400"></canvas>
+
+  <script>
+    fetch('attendance.json')
+      .then(res => res.json())
+      .then(data => {
+        const labels = Object.keys(data).sort();
+        const rates = labels.map(month => data[month].rate);
+
+        const ctx = document.getElementById('attendanceChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: '出勤率',
+              data: rates,
+              fill: false,
+              borderColor: 'blue',
+              backgroundColor: 'blue',
+              tension: 0.2,
+              pointRadius: 4,
+              pointHoverRadius: 6,
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 1,
+                ticks: {
+                  callback: val => (val * 100).toFixed(0) + '%'
+                },
+                title: {
+                  display: true,
+                  text: '出勤率'
+                }
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: '月份'
+                }
+              }
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  label: (context) => {
+                    const month = context.label;
+                    const { attended, total } = data[month];
+                    return ` ${month}：${attended}/${total} 场（${(attended/total*100).toFixed(1)}%）`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      })
+      .catch(err => console.error("读取 JSON 出错：", err));
+  </script>
+</body>
+</html>

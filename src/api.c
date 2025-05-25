@@ -9,6 +9,11 @@ struct string {
     size_t len;
 };
 
+typedef struct {
+    char *data;
+    size_t length;
+} HttpResponse;
+
 static size_t write_callback(void *data, size_t size, size_t nmemb, void *userp) {
     size_t real_size = size * nmemb;
     struct string *s = (struct string *)userp;
@@ -149,55 +154,32 @@ char *fetch_contest_standings(const char *handle, int contestId) {
     return s.ptr;
 }
 
-char **fetch_contest_standings_multi(const char *handle, const int *contestIds, int count) {
-    if (count <= 0) return NULL;
+char* http_get(const char* url) {
+    CURL *curl = curl_easy_init();
+    if (!curl) return NULL;
 
-    CURLM *multi = curl_multi_init();
-    if (!multi) return NULL;
+    // 用 struct string 存放返回
+    struct string s = { .ptr = malloc(1), .len = 0 };
+    char errbuf[CURL_ERROR_SIZE] = {0};
 
-    CURL **easys = calloc(count, sizeof(CURL*));
-    struct string *buffers = calloc(count, sizeof(struct string));
-    char **responses = calloc(count, sizeof(char*));
+    curl_easy_setopt(curl, CURLOPT_URL,        url);
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA,    &s);
+    curl_easy_setopt(curl, CURLOPT_ERRORBUFFER,  errbuf);
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(curl, CURLOPT_CAINFO, "certs/cacert.pem");
+    // 如果你还遇到 SSL 问题，调试时可以取消下面两行注释：
+    // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
+    // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
 
-    for (int i = 0; i < count; i++) {
-        buffers[i].ptr = malloc(1);  // 初始化 buffer
-        buffers[i].len = 0;
-
-        easys[i] = curl_easy_init();
-        if (!easys[i]) continue;
-
-        char *url = malloc(512);
-        snprintf(url, 512,
-                 "https://codeforces.com/api/contest.standings?contestId=%d&handles=%s&showUnofficial=false",
-                 contestIds[i], handle);
-
-        curl_easy_setopt(easys[i], CURLOPT_URL, url);
-        curl_easy_setopt(easys[i], CURLOPT_WRITEFUNCTION, write_callback);
-        curl_easy_setopt(easys[i], CURLOPT_WRITEDATA, &buffers[i]);
-        curl_easy_setopt(easys[i], CURLOPT_CAINFO, "certs/cacert.pem");
-
-        curl_multi_add_handle(multi, easys[i]);
-        free(url);  // curl 会拷贝 URL，不需要保存
+    CURLcode res = curl_easy_perform(curl);
+    if (res != CURLE_OK) {
+        fprintf(stderr, "curl error: %s\n",
+                errbuf[0] ? errbuf : curl_easy_strerror(res));
+        free(s.ptr);
+        curl_easy_cleanup(curl);
+        return NULL;
     }
-
-    int still_running;
-    curl_multi_perform(multi, &still_running);
-    while (still_running) {
-        int numfds;
-        curl_multi_wait(multi, NULL, 0, 1000, &numfds);
-        curl_multi_perform(multi, &still_running);
-    }
-
-    for (int i = 0; i < count; i++) {
-        curl_multi_remove_handle(multi, easys[i]);
-        curl_easy_cleanup(easys[i]);
-
-        responses[i] = buffers[i].ptr;  // 提取响应字符串
-    }
-
-    free(easys);
-    free(buffers);  // 仅释放 struct string 数组本身，里面的 .ptr 是有效数据
-    curl_multi_cleanup(multi);
-
-    return responses;
+    curl_easy_cleanup(curl);
+    return s.ptr;
 }

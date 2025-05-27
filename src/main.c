@@ -37,155 +37,131 @@ static size_t write_callback(void *ptr, size_t size, size_t nmemb, void *userp) 
     return real;
 }
 
-// 并发拉取多场 contest.standings
-int fetch_multiple_standings(int *contestIds, int n, char **responses) {
-    CURLM *multi = curl_multi_init();
-    CURL *easys[MAX_CONTESTS] = {0};
-    HttpResponse bufs[MAX_CONTESTS] = {0};
-
-    // 1) 创建 easy handles
-    for (int i = 0; i < n; ++i) {
-        char url[256];
-        snprintf(url, sizeof(url),
-                 "https://codeforces.com/api/contest.standings?contestId=%d&showUnofficial=true",
-                 contestIds[i]);
-
-        easys[i] = curl_easy_init();
-        bufs[i].data = malloc(1);
-        bufs[i].length = 0;
-
-        curl_easy_setopt(easys[i], CURLOPT_URL,            url);
-        curl_easy_setopt(easys[i], CURLOPT_WRITEFUNCTION,  write_callback);
-        curl_easy_setopt(easys[i], CURLOPT_WRITEDATA,      &bufs[i]);
-        curl_easy_setopt(easys[i], CURLOPT_FOLLOWLOCATION, 1L);
-        curl_easy_setopt(easys[i], CURLOPT_USERAGENT,      "libcurl-agent/1.0");
-        curl_easy_setopt(easys[i], CURLOPT_CAINFO, "certs/cacert.pem");
-
-        curl_multi_add_handle(multi, easys[i]);
-    }
-
-    // 2) 并发执行
-    int still = 0;
-    curl_multi_perform(multi, &still);
-    while (still) {
-        curl_multi_wait(multi, NULL, 0, 500, NULL);
-        curl_multi_perform(multi, &still);
-    }
-
-    // 3) 收集结果
-    for (int i = 0; i < n; ++i) {
-        long code = 0;
-        curl_easy_getinfo(easys[i], CURLINFO_RESPONSE_CODE, &code);
-        if (code == 200) {
-            responses[i] = bufs[i].data;
-        } else {
-            free(bufs[i].data);
-            responses[i] = NULL;
-        }
-        curl_multi_remove_handle(multi, easys[i]);
-        curl_easy_cleanup(easys[i]);
-    }
-    curl_multi_cleanup(multi);
-    return 0;
-}
-
-// -------------------------
-// 数据结构
-// -------------------------
 typedef struct {
-    char index[8];
+    char index[4];  // e.g., "A", "B1"
     char name[128];
-    int submitted;
     int accepted;
+    int submitted;
     double passRate;
-    double maxScore, minScore;
-    double averageScore, scoreVariance;
-    int hasScore;
+
+    double maxScore;
+    double minScore;
+    double averageScore;
+    double scoreVariance;
+
+    bool hasScore;
 } ProblemStats;
 
 typedef struct {
     int contestId;
     char name[128];
-    char category[MAX_CATEGORY_NAME];
+    char category[16]; // Div1, Div2, etc.
     int problemCount;
-    ProblemStats *problems;  // 动态分配
+    ProblemStats problems[32];
 } ContestStats;
 
-// -------------------------
-// 从 JSON 字符串解析 standings
-// -------------------------
-int analyzeContestProblems_from_json(const char *json_str,
-                                     const char *category,
-                                     ContestStats *outStats) {
-    cJSON *root = cJSON_Parse(json_str);
-    if (!root) return -1;
-    cJSON *res = cJSON_GetObjectItem(root, "result");
-    cJSON *probs = cJSON_GetObjectItem(res, "problems");
-    cJSON *rows  = cJSON_GetObjectItem(res, "rows");
-    if (!cJSON_IsArray(probs) || !cJSON_IsArray(rows)) {
+int analyzeContestProblems(int contestId, const char* category, ContestStats* outStats) {
+    char url[256];
+    snprintf(url, sizeof(url),
+             "https://codeforces.com/api/contest.standings?contestId=%d&showUnofficial=true",
+             contestId);
+    char* resp = http_get(url);
+    if (!resp) {
+        fprintf(stderr, "Failed to fetch standings for contest %d\n", contestId);
+        return -1;
+    }
+
+    cJSON* root = cJSON_Parse(resp);
+    free(resp);
+    if (!root) {
+        fprintf(stderr, "Failed to parse JSON for contest %d\n", contestId);
+        return -1;
+    }
+    cJSON* result = cJSON_GetObjectItem(root, "result");
+    cJSON* problems = cJSON_GetObjectItem(result, "problems");
+    cJSON* rows = cJSON_GetObjectItem(result, "rows");
+    if (!cJSON_IsArray(problems) || !cJSON_IsArray(rows)) {
+        fprintf(stderr, "Unexpected API structure for contest %d\n", contestId);
         cJSON_Delete(root);
         return -1;
     }
 
-    // 填基础
-    outStats->contestId = cJSON_GetObjectItem(
-        cJSON_GetObjectItem(res, "contest"), "id")->valueint;
-    strncpy(outStats->name,
-            cJSON_GetObjectItem(
-              cJSON_GetObjectItem(res, "contest"), "name")->valuestring,
-            sizeof(outStats->name)-1);
-    strncpy(outStats->category, category, MAX_CATEGORY_NAME-1);
+    // 填充 ContestStats 基本信息
+    outStats->contestId = contestId;
+    strncpy(outStats->category, category, sizeof(outStats->category)-1);
+    snprintf(outStats->name, MAX_NAME_LEN, "Contest %d", contestId);
+    cJSON* contestInfo = cJSON_GetObjectItem(result, "contest");
+    if (contestInfo) {
+        cJSON* cname = cJSON_GetObjectItem(contestInfo, "name");
+        if (cJSON_IsString(cname)) strncpy(outStats->name, cname->valuestring, MAX_NAME_LEN-1);
+    }
 
-    int pcount = cJSON_GetArraySize(probs);
+    int pcount = cJSON_GetArraySize(problems);
     outStats->problemCount = pcount;
-    outStats->problems = calloc(pcount, sizeof(ProblemStats));
 
-    // 初始化 ProblemStats
+    // 初始化题目统计
     for (int i = 0; i < pcount; ++i) {
-        ProblemStats *ps = &outStats->problems[i];
-        cJSON *p = cJSON_GetArrayItem(probs, i);
-        cJSON *idx = cJSON_GetObjectItem(p, "index");
-        cJSON *nm  = cJSON_GetObjectItem(p, "name");
-        cJSON *pt  = cJSON_GetObjectItem(p, "points");
+        ProblemStats* ps = &outStats->problems[i];
+        memset(ps, 0, sizeof(*ps));
+        cJSON* prob = cJSON_GetArrayItem(problems, i);
+        cJSON* idx = cJSON_GetObjectItem(prob, "index");
+        cJSON* pname = cJSON_GetObjectItem(prob, "name");
+        cJSON* pp = cJSON_GetObjectItem(prob, "points");
         if (cJSON_IsString(idx)) strncpy(ps->index, idx->valuestring, sizeof(ps->index)-1);
-        if (cJSON_IsString(nm))  strncpy(ps->name,  nm->valuestring,  sizeof(ps->name)-1);
-        if (cJSON_IsNumber(pt)) {
+        if (cJSON_IsString(pname)) strncpy(ps->name, pname->valuestring, sizeof(ps->name)-1);
+        if (cJSON_IsNumber(pp)) {
             ps->hasScore = 1;
-            ps->maxScore = ps->minScore = pt->valuedouble;
+            ps->maxScore = pp->valuedouble;
+            ps->minScore = pp->valuedouble;
+        } else {
+            ps->hasScore = 0;
+            ps->maxScore = 0;
+            ps->minScore = 0;
         }
-        ps->submitted = ps->accepted = 0;
+        ps->accepted = ps->submitted = 0;
         ps->averageScore = ps->scoreVariance = 0.0;
     }
 
-    // 累积每个用户的结果
+    // 遍历 rows，统计每道题
     int rcount = cJSON_GetArraySize(rows);
     for (int r = 0; r < rcount; ++r) {
-        cJSON *row = cJSON_GetArrayItem(rows, r);
-        cJSON *pr  = cJSON_GetObjectItem(row, "problemResults");
+        cJSON* row = cJSON_GetArrayItem(rows, r);
+        cJSON* results = cJSON_GetObjectItem(row, "problemResults");
+        if (!cJSON_IsArray(results)) continue;
         for (int i = 0; i < pcount; ++i) {
-            ProblemStats *ps = &outStats->problems[i];
-            cJSON *pi = cJSON_GetArrayItem(pr, i);
-            double score = cJSON_GetObjectItem(pi, "points")->valuedouble;
-            int attempts = cJSON_GetObjectItem(pi, "rejectedAttemptCount")->valueint;
-            if (attempts > 0 || score > 0.0) ps->submitted++;
-            if (score > 0.0) ps->accepted++;
+            ProblemStats* ps = &outStats->problems[i];
+            cJSON* pr = cJSON_GetArrayItem(results, i);
+            double score = cJSON_GetObjectItem(pr, "points")->valuedouble;
+            int attempts = cJSON_GetObjectItem(pr, "rejectedAttemptCount")->valueint;
+
+            // 判断是否提交
+            if (attempts > 0 || score > 0.0) {
+                ps->submitted++;
+            }
+            // 判断是否通过（得分>0）
+            if (score > 0.0) {
+                ps->accepted++;
+            }
+            // 分值统计
             if (ps->hasScore) {
                 if (score > ps->maxScore) ps->maxScore = score;
                 if (score < ps->minScore) ps->minScore = score;
-                ps->averageScore    += score;
-                ps->scoreVariance   += score * score;
+                ps->averageScore += score;
+                ps->scoreVariance += score * score;
             }
         }
     }
 
-    // 计算率、均值、方差
+    // 计算平均与方差
     for (int i = 0; i < pcount; ++i) {
-        ProblemStats *ps = &outStats->problems[i];
-        if (ps->submitted > 0) ps->passRate = (double)ps->accepted / ps->submitted;
+        ProblemStats* ps = &outStats->problems[i];
+        if (ps->submitted > 0)
+            ps->passRate = (double)ps->accepted / ps->submitted;
         if (ps->hasScore && ps->submitted > 0) {
             double sum = ps->averageScore;
-            ps->averageScore  = sum / ps->submitted;
-            double meanSq     = ps->scoreVariance / ps->submitted;
+            ps->averageScore = sum / ps->submitted;
+            // E[X^2] - E[X]^2
+            double meanSq = ps->scoreVariance / ps->submitted;
             ps->scoreVariance = meanSq - ps->averageScore * ps->averageScore;
         }
     }
@@ -194,102 +170,100 @@ int analyzeContestProblems_from_json(const char *json_str,
     return 0;
 }
 
-// -------------------------
-// 主控：并发 + 分类输出
-// -------------------------
 void analyzeProblems(void) {
-    // 1) 读 web/data.json
-    FILE *fp = fopen("web/data.json", "r");
-    if (!fp) { perror("open data.json"); return; }
+    // 1. 读取 web/data.json
+    const char* data_path = "web/data.json";
+    FILE* fp = fopen(data_path, "r");
+    if (!fp) {
+        fprintf(stderr, "Failed to open %s\n", data_path);
+        return;
+    }
     fseek(fp, 0, SEEK_END);
-    long sz = ftell(fp); rewind(fp);
-    char *buf = malloc(sz+1);
-    fread(buf,1,sz,fp); buf[sz]='\0'; fclose(fp);
+    long fsize = ftell(fp);
+    fseek(fp, 0, SEEK_SET);
+    char* text = malloc(fsize + 1);
+    if (!text) { fclose(fp); return; }
+    fread(text, 1, fsize, fp);
+    text[fsize] = '\0';
+    fclose(fp);
 
-    cJSON *root = cJSON_Parse(buf);
-    free(buf);
-    if (!root) { fprintf(stderr, "parse data.json failed\n"); return; }
+    cJSON* root = cJSON_Parse(text);
+    free(text);
+    if (!root) {
+        fprintf(stderr, "Failed to parse data.json\n");
+        return;
+    }
 
-    const char *cats[] = {"Div1","Div2","Div3","Div4","Educational"};
-    int nCats = sizeof(cats)/sizeof(cats[0]);
+    // 2. 准备类别列表
+    const char* categories[] = {"Div1","Div2","Div3","Div4","Educational"};
+    size_t catCount = sizeof(categories)/sizeof(categories[0]);
 
-    for (int ci = 0; ci < nCats; ++ci) {
-        const char *cat = cats[ci];
-        cJSON *arr = cJSON_GetObjectItem(root, cat);
-        if (!cJSON_IsArray(arr)) continue;
+    for (size_t ci = 0; ci < catCount; ++ci) {
+        const char* cat = categories[ci];
+        cJSON* list = cJSON_GetObjectItem(root, cat);
+        if (!cJSON_IsArray(list)) continue;
 
-        int n = cJSON_GetArraySize(arr);
-        int *ids = malloc(n * sizeof(int));
-        char **resps = calloc(n, sizeof(char*));
+        // 为该类别创建输出数组
+        cJSON* outArr = cJSON_CreateArray();
 
-        // 收集 IDs
-        cJSON *it; int idx=0;
-        cJSON_ArrayForEach(it, arr) {
-            ids[idx++] = cJSON_GetObjectItem(it, "id")->valueint;
-        }
+        // 遍历比赛
+        cJSON* item;
+        cJSON_ArrayForEach(item, list) {
+            cJSON* cid_json = cJSON_GetObjectItem(item, "id");
+            if (!cJSON_IsNumber(cid_json)) continue;
+            int contestId = cid_json->valueint;
 
-        // 并发拉取
-        fetch_multiple_standings(ids, n, resps);
-
-        // 解析并汇总到 JSON 数组
-        cJSON *outArr = cJSON_CreateArray();
-        for (int i = 0; i < n; ++i) {
-            if (!resps[i]) continue;
+            // 调用分析函数
             ContestStats stats;
-            memset(&stats,0,sizeof(stats));
-            analyzeContestProblems_from_json(resps[i], cat, &stats);
-            free(resps[i]);
+            memset(&stats, 0, sizeof(stats));
+            if (analyzeContestProblems(contestId, cat, &stats) != 0) {
+                continue;
+            }
 
-            // 序列化 stats
-            cJSON *cobj = cJSON_CreateObject();
-            cJSON_AddNumberToObject(cobj, "contestId",   stats.contestId);
+            // 将 stats 转为 JSON
+            cJSON* cobj = cJSON_CreateObject();
+            cJSON_AddNumberToObject(cobj, "contestId", stats.contestId);
             cJSON_AddStringToObject(cobj, "contestName", stats.name);
-            cJSON_AddStringToObject(cobj, "category",    stats.category);
-            cJSON *parr = cJSON_CreateArray();
-            for (int j = 0; j < stats.problemCount; ++j) {
-                ProblemStats *ps = &stats.problems[j];
-                cJSON *pobj = cJSON_CreateObject();
-                cJSON_AddStringToObject(pobj, "index",      ps->index);
-                cJSON_AddStringToObject(pobj, "name",       ps->name);
-                cJSON_AddNumberToObject(pobj, "submitted",  ps->submitted);
-                cJSON_AddNumberToObject(pobj, "accepted",   ps->accepted);
-                cJSON_AddNumberToObject(pobj, "passRate",   ps->passRate);
+            cJSON_AddStringToObject(cobj, "category", stats.category);
+            cJSON* parr = cJSON_CreateArray();
+            for (int i = 0; i < stats.problemCount; ++i) {
+                ProblemStats* ps = &stats.problems[i];
+                cJSON* pobj = cJSON_CreateObject();
+                cJSON_AddStringToObject(pobj, "index", ps->index);
+                cJSON_AddStringToObject(pobj, "name", ps->name);
+                cJSON_AddNumberToObject(pobj, "submitted", ps->submitted);
+                cJSON_AddNumberToObject(pobj, "accepted",  ps->accepted);
+                cJSON_AddNumberToObject(pobj, "passRate",  ps->passRate);
                 if (ps->hasScore) {
-                    cJSON_AddNumberToObject(pobj, "minScore",     ps->minScore);
-                    cJSON_AddNumberToObject(pobj, "maxScore",     ps->maxScore);
-                    cJSON_AddNumberToObject(pobj, "averageScore", ps->averageScore);
-                    cJSON_AddNumberToObject(pobj, "scoreVariance",ps->scoreVariance);
+                    cJSON_AddNumberToObject(pobj, "minScore",       ps->minScore);
+                    cJSON_AddNumberToObject(pobj, "maxScore",       ps->maxScore);
+                    cJSON_AddNumberToObject(pobj, "averageScore",   ps->averageScore);
+                    cJSON_AddNumberToObject(pobj, "scoreVariance",  ps->scoreVariance);
                 }
                 cJSON_AddItemToArray(parr, pobj);
             }
-            free(stats.problems);
             cJSON_AddItemToObject(cobj, "problems", parr);
             cJSON_AddItemToArray(outArr, cobj);
         }
 
-        // 写文件
-        char path[64];
-        snprintf(path, sizeof(path), "web/%s_stats.json", cat);
-        char *out = cJSON_PrintUnformatted(outArr);
-        FILE *of = fopen(path, "w");
-        if (of) { fprintf(of, "%s\n", out); fclose(of); printf("Wrote %s\n", path); }
-        free(out);
+        // 3. 写入文件 web/<category>_stats.json
+        char outpath[128];
+        snprintf(outpath, sizeof(outpath), "web/%s_stats.json", cat);
+        char* out_text = cJSON_PrintUnformatted(outArr);
+        FILE* ofp = fopen(outpath, "w");
+        if (ofp) {
+            fprintf(ofp, "%s\n", out_text);
+            fclose(ofp);
+            printf("Wrote %s\n", outpath);
+        } else {
+            fprintf(stderr, "Failed to write %s\n", outpath);
+        }
+        free(out_text);
         cJSON_Delete(outArr);
-
-        free(ids);
-        free(resps);
     }
 
     cJSON_Delete(root);
 }
-/**
- * 分析单场比赛题目统计
- * contestId: 比赛 ID
- * category: 比赛类别字符串
- * outStats: 指向已分配的 ContestStats 结构
- */
-
-
 typedef struct {
     int year;
     int month;
@@ -393,7 +367,7 @@ void oneinfo(){
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //选手端---查询年度比赛列表
-void yearlyCFlist(int pre) {
+void yearlyCFlists0000(int pre) {
     int year_to_filter=2025;
     setlocale(LC_TIME, "");
 
@@ -509,6 +483,127 @@ void yearlyCFlist(int pre) {
     printf("已生成 web/data.json，包含 %d 年比赛分组数据。\n", year_to_filter);
     if(pre) upload_web_and_open("http://121.196.195.201/web/etest.html");
     else return;
+}
+void yearlyCFlist(int pre) {
+    int year_to_filter;
+    int month_to_filter;
+    setlocale(LC_TIME, "");
+
+    // 1. 用户输入年份和月份
+    printf("请输入年份 (YYYY，例如 2025): ");
+    if (scanf("%d", &year_to_filter) != 1) {
+        fprintf(stderr, "无效的年份输入。\n");
+        return;
+    }
+    printf("请输入月份 (1-12, 输入 0 表示全年): ");
+    if (scanf("%d", &month_to_filter) != 1 || month_to_filter < 0 || month_to_filter > 12) {
+        fprintf(stderr, "无效的月份输入。\n");
+        return;
+    }
+
+    // 2. 拉取全部比赛列表
+    char *json = fetch_contest_list();
+    if (!json) {
+        fprintf(stderr, "获取比赛列表失败。\n");
+        return;
+    }
+
+    cJSON *root = cJSON_Parse(json);
+    free(json);
+    if (!root) {
+        fprintf(stderr, "JSON 解析失败：%s\n", cJSON_GetErrorPtr());
+        return;
+    }
+    cJSON *status = cJSON_GetObjectItem(root, "status");
+    if (!cJSON_IsString(status) || strcmp(status->valuestring, "OK") != 0) {
+        fprintf(stderr, "API 返回状态异常。\n");
+        cJSON_Delete(root);
+        return;
+    }
+    cJSON *result = cJSON_GetObjectItem(root, "result");
+    if (!cJSON_IsArray(result)) {
+        fprintf(stderr, "比赛列表格式异常。\n");
+        cJSON_Delete(root);
+        return;
+    }
+
+    // 3. 创建分组数组
+    cJSON *out = cJSON_CreateObject();
+    cJSON *arrDiv1 = cJSON_CreateArray();
+    cJSON *arrDiv2 = cJSON_CreateArray();
+    cJSON *arrDiv3 = cJSON_CreateArray();
+    cJSON *arrDiv4 = cJSON_CreateArray();
+    cJSON *arrEdu  = cJSON_CreateArray();
+
+    // 4. 遍历所有已结束比赛并按年月过滤
+    int cnt = cJSON_GetArraySize(result);
+    for (int i = 0; i < cnt; ++i) {
+        cJSON *ct = cJSON_GetArrayItem(result, i);
+        if (!ct) continue;
+        cJSON *phase = cJSON_GetObjectItem(ct, "phase");
+        if (!cJSON_IsString(phase) || strcmp(phase->valuestring, "FINISHED") != 0) continue;
+
+        time_t st = (time_t)cJSON_GetObjectItem(ct, "startTimeSeconds")->valuedouble;
+        struct tm t;
+        localtime_r(&st, &t);
+        int y = t.tm_year + 1900;
+        int m = t.tm_mon + 1;
+        if (y != year_to_filter) continue;
+        if (month_to_filter != 0 && m != month_to_filter) continue;
+
+        // 构造输出项
+        cJSON *item = cJSON_CreateObject();
+        cJSON_AddNumberToObject(item, "id", cJSON_GetObjectItem(ct, "id")->valueint);
+        cJSON_AddStringToObject(item, "name", cJSON_GetObjectItem(ct, "name")->valuestring);
+        char buf[64];
+        strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", &t);
+        cJSON_AddStringToObject(item, "startTime", buf);
+
+        const char *nm = cJSON_GetObjectItem(ct, "name")->valuestring;
+        char *p = strstr(nm, "(Div. ");
+        if (p) {
+            int divnum = 0;
+            if (sscanf(p, "(Div. %d)", &divnum) == 1) {
+                switch (divnum) {
+                    case 1: cJSON_AddItemToArray(arrDiv1, item); break;
+                    case 2: cJSON_AddItemToArray(arrDiv2, item); break;
+                    case 3: cJSON_AddItemToArray(arrDiv3, item); break;
+                    case 4: cJSON_AddItemToArray(arrDiv4, item); break;
+                    default: cJSON_Delete(item); break;
+                }
+            } else {
+                cJSON_Delete(item);
+            }
+        } else if (strstr(nm, "Educational") != NULL) {
+            cJSON_AddItemToArray(arrEdu, item);
+        } else {
+            cJSON_Delete(item);
+        }
+    }
+
+    // 5. 挂载顶层
+    cJSON_AddItemToObject(out, "Div1", arrDiv1);
+    cJSON_AddItemToObject(out, "Div2", arrDiv2);
+    cJSON_AddItemToObject(out, "Div3", arrDiv3);
+    cJSON_AddItemToObject(out, "Div4", arrDiv4);
+    cJSON_AddItemToObject(out, "Educational", arrEdu);
+
+    // 6. 写文件并提示
+    char *out_str = cJSON_Print(out);
+    FILE *fp = fopen("web/data.json", "w");
+    if (fp) {
+        fprintf(fp, "%s", out_str);
+        fclose(fp);
+        printf("已生成 web/data.json，包含 %d 年 %s 比赛分组数据。\n", year_to_filter,
+               month_to_filter == 0 ? "全年" : (char[]){0});
+    } else {
+        perror("无法打开 web/data.json");
+    }
+    free(out_str);
+    cJSON_Delete(out);
+    cJSON_Delete(root);
+
+    if (pre) upload_web_and_open("http://121.196.195.201/web/etest.html");
 }
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -981,218 +1076,6 @@ void userevo() {
     cJSON_Delete(root);
 }
 
-// //分析每一场比赛
-// int analyzeContestProblems(int contestId, const char* category, ContestStats* outStats) {
-//     char url[256];
-//     snprintf(url, sizeof(url),
-//              "https://codeforces.com/api/contest.standings?contestId=%d&showUnofficial=true",
-//              contestId);
-//     char* resp = http_get(url);
-//     if (!resp) {
-//         fprintf(stderr, "Failed to fetch standings for contest %d\n", contestId);
-//         return -1;
-//     }
-
-//     cJSON* root = cJSON_Parse(resp);
-//     free(resp);
-//     if (!root) {
-//         fprintf(stderr, "Failed to parse JSON for contest %d\n", contestId);
-//         return -1;
-//     }
-//     cJSON* result = cJSON_GetObjectItem(root, "result");
-//     cJSON* problems = cJSON_GetObjectItem(result, "problems");
-//     cJSON* rows = cJSON_GetObjectItem(result, "rows");
-//     if (!cJSON_IsArray(problems) || !cJSON_IsArray(rows)) {
-//         fprintf(stderr, "Unexpected API structure for contest %d\n", contestId);
-//         cJSON_Delete(root);
-//         return -1;
-//     }
-
-//     // 填充 ContestStats 基本信息
-//     outStats->contestId = contestId;
-//     strncpy(outStats->category, category, sizeof(outStats->category)-1);
-//     snprintf(outStats->name, MAX_NAME_LEN, "Contest %d", contestId);
-//     cJSON* contestInfo = cJSON_GetObjectItem(result, "contest");
-//     if (contestInfo) {
-//         cJSON* cname = cJSON_GetObjectItem(contestInfo, "name");
-//         if (cJSON_IsString(cname)) strncpy(outStats->name, cname->valuestring, MAX_NAME_LEN-1);
-//     }
-
-//     int pcount = cJSON_GetArraySize(problems);
-//     outStats->problemCount = pcount;
-
-//     // 初始化题目统计
-//     for (int i = 0; i < pcount; ++i) {
-//         ProblemStats* ps = &outStats->problems[i];
-//         memset(ps, 0, sizeof(*ps));
-//         cJSON* prob = cJSON_GetArrayItem(problems, i);
-//         cJSON* idx = cJSON_GetObjectItem(prob, "index");
-//         cJSON* pname = cJSON_GetObjectItem(prob, "name");
-//         cJSON* pp = cJSON_GetObjectItem(prob, "points");
-//         if (cJSON_IsString(idx)) strncpy(ps->index, idx->valuestring, sizeof(ps->index)-1);
-//         if (cJSON_IsString(pname)) strncpy(ps->name, pname->valuestring, sizeof(ps->name)-1);
-//         if (cJSON_IsNumber(pp)) {
-//             ps->hasScore = 1;
-//             ps->maxScore = pp->valuedouble;
-//             ps->minScore = pp->valuedouble;
-//         } else {
-//             ps->hasScore = 0;
-//             ps->maxScore = 0;
-//             ps->minScore = 0;
-//         }
-//         ps->accepted = ps->submitted = 0;
-//         ps->averageScore = ps->scoreVariance = 0.0;
-//     }
-
-//     // 遍历 rows，统计每道题
-//     int rcount = cJSON_GetArraySize(rows);
-//     for (int r = 0; r < rcount; ++r) {
-//         cJSON* row = cJSON_GetArrayItem(rows, r);
-//         cJSON* results = cJSON_GetObjectItem(row, "problemResults");
-//         if (!cJSON_IsArray(results)) continue;
-//         for (int i = 0; i < pcount; ++i) {
-//             ProblemStats* ps = &outStats->problems[i];
-//             cJSON* pr = cJSON_GetArrayItem(results, i);
-//             double score = cJSON_GetObjectItem(pr, "points")->valuedouble;
-//             int attempts = cJSON_GetObjectItem(pr, "rejectedAttemptCount")->valueint;
-
-//             // 判断是否提交
-//             if (attempts > 0 || score > 0.0) {
-//                 ps->submitted++;
-//             }
-//             // 判断是否通过（得分>0）
-//             if (score > 0.0) {
-//                 ps->accepted++;
-//             }
-//             // 分值统计
-//             if (ps->hasScore) {
-//                 if (score > ps->maxScore) ps->maxScore = score;
-//                 if (score < ps->minScore) ps->minScore = score;
-//                 ps->averageScore += score;
-//                 ps->scoreVariance += score * score;
-//             }
-//         }
-//     }
-
-//     // 计算平均与方差
-//     for (int i = 0; i < pcount; ++i) {
-//         ProblemStats* ps = &outStats->problems[i];
-//         if (ps->submitted > 0)
-//             ps->passRate = (double)ps->accepted / ps->submitted;
-//         if (ps->hasScore && ps->submitted > 0) {
-//             double sum = ps->averageScore;
-//             ps->averageScore = sum / ps->submitted;
-//             // E[X^2] - E[X]^2
-//             double meanSq = ps->scoreVariance / ps->submitted;
-//             ps->scoreVariance = meanSq - ps->averageScore * ps->averageScore;
-//         }
-//     }
-
-//     cJSON_Delete(root);
-//     return 0;
-// }
-
-
-// void monana(){
-
-// }
-
-// void analyzeProblems(void) {
-//     // 1. 读取 web/data.json
-//     const char* data_path = "web/data.json";
-//     FILE* fp = fopen(data_path, "r");
-//     if (!fp) {
-//         fprintf(stderr, "Failed to open %s\n", data_path);
-//         return;
-//     }
-//     fseek(fp, 0, SEEK_END);
-//     long fsize = ftell(fp);
-//     fseek(fp, 0, SEEK_SET);
-//     char* text = malloc(fsize + 1);
-//     if (!text) { fclose(fp); return; }
-//     fread(text, 1, fsize, fp);
-//     text[fsize] = '\0';
-//     fclose(fp);
-
-//     cJSON* root = cJSON_Parse(text);
-//     free(text);
-//     if (!root) {
-//         fprintf(stderr, "Failed to parse data.json\n");
-//         return;
-//     }
-
-//     // 2. 准备类别列表
-//     const char* categories[] = {"Div1","Div2","Div3","Div4","Educational"};
-//     size_t catCount = sizeof(categories)/sizeof(categories[0]);
-
-//     for (size_t ci = 0; ci < catCount; ++ci) {
-//         const char* cat = categories[ci];
-//         cJSON* list = cJSON_GetObjectItem(root, cat);
-//         if (!cJSON_IsArray(list)) continue;
-
-//         // 为该类别创建输出数组
-//         cJSON* outArr = cJSON_CreateArray();
-
-//         // 遍历比赛
-//         cJSON* item;
-//         cJSON_ArrayForEach(item, list) {
-//             cJSON* cid_json = cJSON_GetObjectItem(item, "id");
-//             if (!cJSON_IsNumber(cid_json)) continue;
-//             int contestId = cid_json->valueint;
-
-//             // 调用分析函数
-//             ContestStats stats;
-//             memset(&stats, 0, sizeof(stats));
-//             if (analyzeContestProblems(contestId, cat, &stats) != 0) {
-//                 continue;
-//             }
-
-//             // 将 stats 转为 JSON
-//             cJSON* cobj = cJSON_CreateObject();
-//             cJSON_AddNumberToObject(cobj, "contestId", stats.contestId);
-//             cJSON_AddStringToObject(cobj, "contestName", stats.name);
-//             cJSON_AddStringToObject(cobj, "category", stats.category);
-//             cJSON* parr = cJSON_CreateArray();
-//             for (int i = 0; i < stats.problemCount; ++i) {
-//                 ProblemStats* ps = &stats.problems[i];
-//                 cJSON* pobj = cJSON_CreateObject();
-//                 cJSON_AddStringToObject(pobj, "index", ps->index);
-//                 cJSON_AddStringToObject(pobj, "name", ps->name);
-//                 cJSON_AddNumberToObject(pobj, "submitted", ps->submitted);
-//                 cJSON_AddNumberToObject(pobj, "accepted",  ps->accepted);
-//                 cJSON_AddNumberToObject(pobj, "passRate",  ps->passRate);
-//                 if (ps->hasScore) {
-//                     cJSON_AddNumberToObject(pobj, "minScore",       ps->minScore);
-//                     cJSON_AddNumberToObject(pobj, "maxScore",       ps->maxScore);
-//                     cJSON_AddNumberToObject(pobj, "averageScore",   ps->averageScore);
-//                     cJSON_AddNumberToObject(pobj, "scoreVariance",  ps->scoreVariance);
-//                 }
-//                 cJSON_AddItemToArray(parr, pobj);
-//             }
-//             cJSON_AddItemToObject(cobj, "problems", parr);
-//             cJSON_AddItemToArray(outArr, cobj);
-//         }
-
-//         // 3. 写入文件 web/<category>_stats.json
-//         char outpath[128];
-//         snprintf(outpath, sizeof(outpath), "web/%s_stats.json", cat);
-//         char* out_text = cJSON_PrintUnformatted(outArr);
-//         FILE* ofp = fopen(outpath, "w");
-//         if (ofp) {
-//             fprintf(ofp, "%s\n", out_text);
-//             fclose(ofp);
-//             printf("Wrote %s\n", outpath);
-//         } else {
-//             fprintf(stderr, "Failed to write %s\n", outpath);
-//         }
-//         free(out_text);
-//         cJSON_Delete(outArr);
-//     }
-
-//     cJSON_Delete(root);
-// }
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 //教练端
 void coach(){
 
@@ -1246,6 +1129,5 @@ int main(){
     }else if(choice==2){
         player();
     }else printf("输入有效值!");
-    // system("start \"\" \"web\\etest.html\"");//加了这一行
     return 0;
 }

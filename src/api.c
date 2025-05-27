@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <curl/multi.h>
+#include<cJSON.h>
 
 struct string {
     char *ptr;
@@ -40,9 +41,7 @@ char *fetch_user_info(const char *handle) {
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &s);
     curl_easy_setopt(curl, CURLOPT_ERRORBUFFER, errbuf);
     curl_easy_setopt(curl, CURLOPT_CAINFO, "certs/cacert.pem");
-    // 临时调试时可以关 SSL 验证
-    // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
+
 
     CURLcode res = curl_easy_perform(curl);
     if (res != CURLE_OK) {

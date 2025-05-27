@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title>Codeforces 各题统计图</title>
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #controls {
+      margin-bottom: 10px;
+    }
+    #chart {
+      width: 100%;
+      height: 500px;
+    }
+    #title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="controls">
+    <label for="categorySelect">选择类别：</label>
+    <select id="categorySelect">
+      <option value="Div1_stats.json">Div1</option>
+      <option value="Div2_stats.json">Div2</option>
+      <option value="Div3_stats.json">Div3</option>
+      <option value="Div4_stats.json">Div4</option>
+      <option value="Educational_stats.json">Educational</option>
+    </select>
+
+    <label for="contestSelect">选择比赛：</label>
+    <select id="contestSelect"></select>
+  </div>
+
+  <div id="title">比赛标题</div>
+  <div id="chart"></div>
+
+  <script>
+    const categorySelect = document.getElementById('categorySelect');
+    const contestSelect = document.getElementById('contestSelect');
+    const titleEl = document.getElementById('title');
+    const myChart = echarts.init(document.getElementById('chart'));
+    let allData = [];
+
+    categorySelect.addEventListener('change', () => {
+      loadCategory(categorySelect.value);
+    });
+
+    contestSelect.addEventListener('change', () => {
+      const idx = parseInt(contestSelect.value);
+      showContest(idx);
+    });
+
+    function loadCategory(file) {
+      fetch(`./${file}`)
+        .then(res => res.json())
+        .then(data => {
+          allData = data;
+          contestSelect.innerHTML = '';
+          data.forEach((c, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = c.contestName;
+            contestSelect.appendChild(opt);
+          });
+          showContest(0);
+        });
+    }
+
+    function showContest(idx) {
+      const contest = allData[idx];
+      titleEl.textContent = contest.contestName;
+
+      const category = contest.category;
+      const isScoreBased = category === 'Div1' || category === 'Div2';
+
+      const xData = contest.problems.map(p => p.index);
+      const yData = contest.problems.map(p => 
+        isScoreBased
+          ? (p.averageScore ?? 0).toFixed(2)
+          : (p.passRate * 100).toFixed(2)
+      );
+
+      const tooltipData = contest.problems.map((p, i) =>
+        isScoreBased
+          ? `题目：${p.name}<br/>
+平均得分：${(p.averageScore ?? 0).toFixed(1)}<br/>
+通过率：${(p.passRate * 100).toFixed(2)}%<br/>
+最高：${p.maxScore ?? '-'}，最低：${p.minScore ?? '-'}，方差：${(p.scoreVariance ?? 0).toFixed(2)}`
+          : `题目：${p.name}<br/>
+提交数：${p.submitted}，通过数：${p.accepted}<br/>
+通过率：${(p.passRate * 100).toFixed(2)}%`
+      );
+
+      const seriesConfig = {
+        name: isScoreBased ? '平均得分' : '通过率 (%)',
+        type: 'bar',
+        data: yData,
+        itemStyle: {
+          color: isScoreBased ? '#5470c6' : '#91cc75'
+        }
+      };
+
+      myChart.setOption({
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: { type: 'shadow' },
+          formatter: function (params) {
+            const i = params[0].dataIndex;
+            return tooltipData[i];
+          }
+        },
+        xAxis: {
+          type: 'category',
+          data: xData,
+          axisLabel: { fontWeight: 'bold' }
+        },
+        yAxis: {
+          type: 'value',
+          name: isScoreBased ? '平均得分' : '通过率 (%)',
+          max: isScoreBased ? null : 100
+        },
+        series: [seriesConfig]
+      });
+    }
+
+    // 默认加载 Div1
+    loadCategory('Div1_stats.json');
+  </script>
+</body>
+</html>

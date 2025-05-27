@@ -1,38 +1,1738 @@
 [{
-		"contestId":	2070,
-		"contestName":	"Educational Codeforces Round 175 (Rated for Div. 2)",
-		"ratingUpdateTime":	1740674100,
-		"rank":	13663,
+		"contestId":	1942,
+		"contestName":	"CodeTON Round 8 (Div. 1 + Div. 2, Rated, Prizes!)",
+		"ratingUpdateTime":	1711820100,
+		"rank":	10183,
 		"oldRating":	0,
-		"newRating":	396,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A"]
-	}, {
-		"contestId":	2071,
-		"contestName":	"Codeforces Round 1007 (Div. 2)",
-		"ratingUpdateTime":	1740761400,
-		"rank":	14935,
-		"oldRating":	396,
-		"newRating":	647,
+		"newRating":	392,
 		"rankBefore":	"Newbie",
 		"rankAfter":	"Newbie",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	500,
-				"points":	440
+				"points":	476
 			}, {
 				"index":	"B",
 				"maxPoints":	1000,
 				"points":	0
 			}, {
+				"index":	"C1",
+				"maxPoints":	1250,
+				"points":	0
+			}, {
+				"index":	"C2",
+				"maxPoints":	750,
+				"points":	0
+			}, {
+				"index":	"D",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	4500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1951,
+		"contestName":	"Codeforces Global Round 25",
+		"ratingUpdateTime":	1712424900,
+		"rank":	6158,
+		"oldRating":	392,
+		"newRating":	745,
+		"rankBefore":	"Newbie",
+		"rankAfter":	"Newbie",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	484
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	785
+			}, {
 				"index":	"C",
 				"maxPoints":	1500,
 				"points":	0
 			}, {
-				"index":	"D1",
+				"index":	"D",
 				"maxPoints":	1750,
 				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3250,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	3500,
+				"points":	0
+			}, {
+				"index":	"I",
+				"maxPoints":	4000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1955,
+		"contestName":	"Codeforces Round 938 (Div. 3)",
+		"ratingUpdateTime":	1712595000,
+		"rank":	5347,
+		"oldRating":	745,
+		"newRating":	1029,
+		"rankBefore":	"Newbie",
+		"rankAfter":	"Newbie",
+		"problems":	["A", "B", "C", "D"]
+	}, {
+		"contestId":	1969,
+		"contestName":	"Educational Codeforces Round 165 (Rated for Div. 2)",
+		"ratingUpdateTime":	1714408500,
+		"rank":	5810,
+		"oldRating":	1029,
+		"newRating":	1172,
+		"rankBefore":	"Newbie",
+		"rankAfter":	"Newbie",
+		"problems":	["A", "B"]
+	}, {
+		"contestId":	1968,
+		"contestName":	"Codeforces Round 943 (Div. 3)",
+		"ratingUpdateTime":	1714669200,
+		"rank":	5824,
+		"oldRating":	1172,
+		"newRating":	1275,
+		"rankBefore":	"Newbie",
+		"rankAfter":	"Pupil",
+		"problems":	["A", "B", "C", "D"]
+	}, {
+		"contestId":	1971,
+		"contestName":	"Codeforces Round 944 (Div. 4)",
+		"ratingUpdateTime":	1715359800,
+		"rank":	1248,
+		"oldRating":	1275,
+		"newRating":	1462,
+		"rankBefore":	"Pupil",
+		"rankAfter":	"Specialist",
+		"problems":	["A", "B", "C", "D", "E", "F"]
+	}, {
+		"contestId":	1973,
+		"contestName":	"Codeforces Round 945 (Div. 2)",
+		"ratingUpdateTime":	1715963700,
+		"rank":	2682,
+		"oldRating":	1462,
+		"newRating":	1506,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	476
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	712
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	816
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1980,
+		"contestName":	"Codeforces Round 950 (Div. 3)",
+		"ratingUpdateTime":	1717433400,
+		"rank":	7280,
+		"oldRating":	1506,
+		"newRating":	1463,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	["A", "B", "C"]
+	}, {
+		"contestId":	1979,
+		"contestName":	"Codeforces Round 951 (Div. 2)",
+		"ratingUpdateTime":	1717691700,
+		"rank":	3062,
+		"oldRating":	1463,
+		"newRating":	1509,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	490
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	904
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1248
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1983,
+		"contestName":	"Codeforces Round 956 (Div. 2) and ByteRace 2024",
+		"ratingUpdateTime":	1720371000,
+		"rank":	6118,
+		"oldRating":	1509,
+		"newRating":	1474,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	350
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	496
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	765
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1992,
+		"contestName":	"Codeforces Round 957 (Div. 3)",
+		"ratingUpdateTime":	1720716600,
+		"rank":	2370,
+		"oldRating":	1474,
+		"newRating":	1521,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	["A", "B", "C", "D", "E"]
+	}, {
+		"contestId":	1988,
+		"contestName":	"Codeforces Round 958 (Div. 2)",
+		"ratingUpdateTime":	1721061300,
+		"rank":	2520,
+		"oldRating":	1521,
+		"newRating":	1570,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	486
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	948
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	800
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1994,
+		"contestName":	"Codeforces Round 959 sponsored by NEAR (Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1721320500,
+		"rank":	3258,
+		"oldRating":	1570,
+		"newRating":	1589,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	488
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	896
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	885
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	3750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1990,
+		"contestName":	"Codeforces Round 960 (Div. 2)",
+		"ratingUpdateTime":	1721493300,
+		"rank":	1510,
+		"oldRating":	1589,
+		"newRating":	1656,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	486
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	838
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1098
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	901
+			}, {
+				"index":	"E1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	750,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1991,
+		"contestName":	"Pinely Round 4 (Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1722188100,
+		"rank":	6658,
+		"oldRating":	1656,
+		"newRating":	1572,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	250,
+				"points":	248
+			}, {
+				"index":	"B",
+				"maxPoints":	500,
+				"points":	429
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	686
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	3500,
+				"points":	0
+			}, {
+				"index":	"I",
+				"maxPoints":	4000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1997,
+		"contestName":	"Educational Codeforces Round 168 (Rated for Div. 2)",
+		"ratingUpdateTime":	1722357300,
+		"rank":	9300,
+		"oldRating":	1572,
+		"newRating":	1500,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	["B", "C", "D"]
+	}, {
+		"contestId":	1993,
+		"contestName":	"Codeforces Round 963 (Div. 2)",
+		"ratingUpdateTime":	1722789300,
+		"rank":	3846,
+		"oldRating":	1500,
+		"newRating":	1518,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Specialist",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	490
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	924
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	978
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	1000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	1998,
+		"contestName":	"Codeforces Round 965 (Div. 2)",
+		"ratingUpdateTime":	1723307700,
+		"rank":	1402,
+		"oldRating":	1518,
+		"newRating":	1620,
+		"rankBefore":	"Specialist",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	482
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	702
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	875
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	1750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2004,
+		"contestName":	"Educational Codeforces Round 169 (Rated for Div. 2)",
+		"ratingUpdateTime":	1723739700,
+		"rank":	2423,
+		"oldRating":	1620,
+		"newRating":	1651,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C", "D"]
+	}, {
+		"contestId":	2001,
+		"contestName":	"Codeforces Round 967 (Div. 2)",
+		"ratingUpdateTime":	1724171700,
+		"rank":	2384,
+		"oldRating":	1651,
+		"newRating":	1672,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	494
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	944
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1150
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	2000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2007,
+		"contestName":	"Codeforces Round 969 (Div. 2)",
+		"ratingUpdateTime":	1725037500,
+		"rank":	508,
+		"oldRating":	1672,
+		"newRating":	1758,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	489
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	712
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	845
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	1208
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2005,
+		"contestName":	"Codeforces Round 972 (Div. 2)",
+		"ratingUpdateTime":	1726331700,
+		"rank":	2968,
+		"oldRating":	1758,
+		"newRating":	1732,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	750,
+				"points":	732
+			}, {
+				"index":	"B1",
+				"maxPoints":	500,
+				"points":	460
+			}, {
+				"index":	"B2",
+				"maxPoints":	500,
+				"points":	460
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"D",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	2000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2013,
+		"contestName":	"Codeforces Round 973 (Div. 2)",
+		"ratingUpdateTime":	1726850100,
+		"rank":	951,
+		"oldRating":	1732,
+		"newRating":	1796,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	726
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	1000
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	1480
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	2000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2019,
+		"contestName":	"Codeforces Round 975 (Div. 2)",
+		"ratingUpdateTime":	1727453100,
+		"rank":	1179,
+		"oldRating":	1796,
+		"newRating":	1792,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	904
+			}, {
+				"index":	"C",
+				"maxPoints":	1750,
+				"points":	1024
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	1092
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2020,
+		"contestName":	"Codeforces Round 976 (Div. 2) and Divide By Zero 9.0",
+		"ratingUpdateTime":	1727631300,
+		"rank":	2464,
+		"oldRating":	1792,
+		"newRating":	1767,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	494
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	566
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	1045
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2021,
+		"contestName":	"Codeforces Round 977 (Div. 2, based on COMPFEST 16 - Final Round)",
+		"ratingUpdateTime":	1728201900,
+		"rank":	1872,
+		"oldRating":	1767,
+		"newRating":	1760,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	484
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	693
+			}, {
+				"index":	"C1",
+				"maxPoints":	750,
+				"points":	651
+			}, {
+				"index":	"C2",
+				"maxPoints":	1000,
+				"points":	0
+			}, {
+				"index":	"D",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	750,
+				"points":	0
+			}, {
+				"index":	"E3",
+				"maxPoints":	1000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2025,
+		"contestName":	"Educational Codeforces Round 170 (Rated for Div. 2)",
+		"ratingUpdateTime":	1728923700,
+		"rank":	1234,
+		"oldRating":	1760,
+		"newRating":	1796,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C", "D"]
+	}, {
+		"contestId":	2030,
+		"contestName":	"Codeforces Round 979 (Div. 2)",
+		"ratingUpdateTime":	1729354800,
+		"rank":	2096,
+		"oldRating":	1796,
+		"newRating":	1774,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	250,
+				"points":	245
+			}, {
+				"index":	"B",
+				"maxPoints":	500,
+				"points":	480
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	924
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	702
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"G1",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"G2",
+				"maxPoints":	1500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2024,
+		"contestName":	"Codeforces Round 980 (Div. 2)",
+		"ratingUpdateTime":	1729422300,
+		"rank":	3859,
+		"oldRating":	1774,
+		"newRating":	1689,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	924
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	650
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2027,
+		"contestName":	"Codeforces Round 982 (Div. 2)",
+		"ratingUpdateTime":	1729960500,
+		"rank":	1763,
+		"oldRating":	1689,
+		"newRating":	1696,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	490
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	956
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	785
+			}, {
+				"index":	"D1",
+				"maxPoints":	1250,
+				"points":	745
+			}, {
+				"index":	"D2",
+				"maxPoints":	1000,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	1000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2035,
+		"contestName":	"Codeforces Global Round 27",
+		"ratingUpdateTime":	1730050500,
+		"rank":	2902,
+		"oldRating":	1696,
+		"newRating":	1673,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	250,
+				"points":	246
+			}, {
+				"index":	"B",
+				"maxPoints":	500,
+				"points":	482
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	848
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"G1",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"G2",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	4500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2026,
+		"contestName":	"Educational Codeforces Round 171 (Rated for Div. 2)",
+		"ratingUpdateTime":	1730133300,
+		"rank":	3434,
+		"oldRating":	1673,
+		"newRating":	1645,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C"]
+	}, {
+		"contestId":	2028,
+		"contestName":	"Codeforces Round 986 (Div. 2)",
+		"ratingUpdateTime":	1731260100,
+		"rank":	1207,
+		"oldRating":	1645,
+		"newRating":	1698,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	480
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	900
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1128
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2031,
+		"contestName":	"Codeforces Round 987 (Div. 2)",
+		"ratingUpdateTime":	1731681300,
+		"rank":	960,
+		"oldRating":	1698,
+		"newRating":	1765,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	490
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	874
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1258
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	1576
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2039,
+		"contestName":	"CodeTON Round 9 (Div. 1 + Div. 2, Rated, Prizes!)",
+		"ratingUpdateTime":	1732383300,
+		"rank":	1112,
+		"oldRating":	1765,
+		"newRating":	1834,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	884
+			}, {
+				"index":	"C1",
+				"maxPoints":	1000,
+				"points":	910
+			}, {
+				"index":	"C2",
+				"maxPoints":	1500,
+				"points":	1284
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	1558
+			}, {
+				"index":	"E",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	4250,
+				"points":	0
+			}, {
+				"index":	"H1",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"H2",
+				"maxPoints":	2500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2034,
+		"contestName":	"Rayan Programming Contest 2024 - Selection (Codeforces Round 989, Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1732988100,
+		"rank":	2064,
+		"oldRating":	1834,
+		"newRating":	1811,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	486
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	718
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1348
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	642
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"G1",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"G2",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	5000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2047,
+		"contestName":	"Codeforces Round 990 (Div. 2)",
+		"ratingUpdateTime":	1733214300,
+		"rank":	592,
+		"oldRating":	1811,
+		"newRating":	1812,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	494
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	956
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1240
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	1560
+			}, {
+				"index":	"E",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	4000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2040,
+		"contestName":	"Codeforces Round 992 (Div. 2)",
+		"ratingUpdateTime":	1733675700,
+		"rank":	6276,
+		"oldRating":	1812,
+		"newRating":	1692,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	488
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	846
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2048,
+		"contestName":	"Codeforces Global Round 28",
+		"ratingUpdateTime":	1734629700,
+		"rank":	989,
+		"oldRating":	1692,
+		"newRating":	1789,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	250,
+				"points":	250
+			}, {
+				"index":	"B",
+				"maxPoints":	500,
+				"points":	491
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	918
+			}, {
+				"index":	"D",
+				"maxPoints":	1250,
+				"points":	930
+			}, {
+				"index":	"E",
+				"maxPoints":	1750,
+				"points":	1061
+			}, {
+				"index":	"F",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"I1",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"I2",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2049,
+		"contestName":	"Codeforces Round 994 (Div. 2)",
+		"ratingUpdateTime":	1734712500,
+		"rank":	1440,
+		"oldRating":	1789,
+		"newRating":	1800,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	494
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	702
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	472
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	1057
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2043,
+		"contestName":	"Educational Codeforces Round 173 (Rated for Div. 2)",
+		"ratingUpdateTime":	1735058100,
+		"rank":	2483,
+		"oldRating":	1800,
+		"newRating":	1764,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C"]
+	}, {
+		"contestId":	2053,
+		"contestName":	"Good Bye 2024: 2025 is NEAR",
+		"ratingUpdateTime":	1735407300,
+		"rank":	2738,
+		"oldRating":	1764,
+		"newRating":	1755,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	495
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	915
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	1010
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	1094
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	4250,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	4500,
+				"points":	0
+			}, {
+				"index":	"I1",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"I2",
+				"maxPoints":	2000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2057,
+		"contestName":	"Hello 2025",
+		"ratingUpdateTime":	1736010300,
+		"rank":	2649,
+		"oldRating":	1755,
+		"newRating":	1752,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	499
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	978
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1204
+			}, {
+				"index":	"D",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1000,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3750,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	4500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2055,
+		"contestName":	"Codeforces Round 996 (Div. 2)",
+		"ratingUpdateTime":	1736699700,
+		"rank":	542,
+		"oldRating":	1752,
+		"newRating":	1856,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	494
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	902
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1236
+			}, {
+				"index":	"D",
+				"maxPoints":	2250,
+				"points":	1476
+			}, {
+				"index":	"E",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2056,
+		"contestName":	"Codeforces Round 997 (Div. 2)",
+		"ratingUpdateTime":	1737131700,
+		"rank":	1230,
+		"oldRating":	1856,
+		"newRating":	1866,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	492
+			}, {
+				"index":	"B",
+				"maxPoints":	1250,
+				"points":	1130
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1302
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	1250,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2061,
+		"contestName":	"IAEPC Preliminary Contest (Codeforces Round 999, Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1737394500,
+		"rank":	3433,
+		"oldRating":	1866,
+		"newRating":	1787,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	498
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	958
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"D",
+				"maxPoints":	1500,
+				"points":	942
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"H1",
+				"maxPoints":	3000,
+				"points":	0
+			}, {
+				"index":	"H2",
+				"maxPoints":	5000,
+				"points":	0
+			}, {
+				"index":	"I",
+				"maxPoints":	4500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2063,
+		"contestName":	"Codeforces Round 1000 (Div. 2)",
+		"ratingUpdateTime":	1737554700,
+		"rank":	2074,
+		"oldRating":	1787,
+		"newRating":	1781,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	478
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	944
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1168
+			}, {
+				"index":	"D",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	1500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2062,
+		"contestName":	"Ethflow Round 1 (Codeforces Round 1001, Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1737911100,
+		"rank":	1925,
+		"oldRating":	1781,
+		"newRating":	1801,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	981
+			}, {
+				"index":	"C",
+				"maxPoints":	1000,
+				"points":	940
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	3500,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	4000,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	4500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2059,
+		"contestName":	"Codeforces Round 1002 (Div. 2)",
+		"ratingUpdateTime":	1738514100,
+		"rank":	2216,
+		"oldRating":	1801,
+		"newRating":	1781,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	490
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	864
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	1068
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"E1",
+				"maxPoints":	1500,
+				"points":	0
+			}, {
+				"index":	"E2",
+				"maxPoints":	1500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2067,
+		"contestName":	"Codeforces Round 1004 (Div. 2)",
+		"ratingUpdateTime":	1739291700,
+		"rank":	702,
+		"oldRating":	1781,
+		"newRating":	1813,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	492
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	908
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	995
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	1750,
+				"points":	902
+			}, {
+				"index":	"F",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	3000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2064,
+		"contestName":	"Codeforces Round 1005 (Div. 2)",
+		"ratingUpdateTime":	1739723700,
+		"rank":	1440,
+		"oldRating":	1813,
+		"newRating":	1818,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	488
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	862
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	950
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	973
+			}, {
+				"index":	"E",
+				"maxPoints":	2250,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2069,
+		"contestName":	"Educational Codeforces Round 174 (Rated for Div. 2)",
+		"ratingUpdateTime":	1739896500,
+		"rank":	1386,
+		"oldRating":	1818,
+		"newRating":	1820,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C", "D"]
+	}, {
+		"contestId":	2070,
+		"contestName":	"Educational Codeforces Round 175 (Rated for Div. 2)",
+		"ratingUpdateTime":	1740674100,
+		"rank":	3496,
+		"oldRating":	1820,
+		"newRating":	1748,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C"]
+	}, {
+		"contestId":	2071,
+		"contestName":	"Codeforces Round 1007 (Div. 2)",
+		"ratingUpdateTime":	1740761400,
+		"rank":	936,
+		"oldRating":	1748,
+		"newRating":	1797,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	956
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	972
+			}, {
+				"index":	"D1",
+				"maxPoints":	1750,
+				"points":	924
 			}, {
 				"index":	"D2",
 				"maxPoints":	1250,
@@ -50,27 +1750,27 @@
 		"contestId":	2078,
 		"contestName":	"Codeforces Round 1008 (Div. 2)",
 		"ratingUpdateTime":	1741626900,
-		"rank":	13607,
-		"oldRating":	647,
-		"newRating":	812,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"rank":	324,
+		"oldRating":	1797,
+		"newRating":	1866,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	500,
-				"points":	322
+				"points":	497
 			}, {
 				"index":	"B",
 				"maxPoints":	750,
-				"points":	0
+				"points":	734
 			}, {
 				"index":	"C",
 				"maxPoints":	1250,
-				"points":	0
+				"points":	1162
 			}, {
 				"index":	"D",
 				"maxPoints":	1750,
-				"points":	0
+				"points":	1443
 			}, {
 				"index":	"E",
 				"maxPoints":	2000,
@@ -85,50 +1785,110 @@
 				"points":	0
 			}]
 	}, {
-		"contestId":	2074,
-		"contestName":	"Codeforces Round 1009 (Div. 3)",
-		"ratingUpdateTime":	1741712700,
-		"rank":	15012,
-		"oldRating":	812,
-		"newRating":	926,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A", "B"]
-	}, {
-		"contestId":	2075,
-		"contestName":	"Educational Codeforces Round 176 (Rated for Div. 2)",
-		"ratingUpdateTime":	1742229300,
-		"rank":	15670,
-		"oldRating":	926,
-		"newRating":	969,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A"]
-	}, {
-		"contestId":	2092,
-		"contestName":	"Codeforces Round 1014 (Div. 2)",
-		"ratingUpdateTime":	1743266100,
-		"rank":	9988,
-		"oldRating":	969,
-		"newRating":	1039,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"contestId":	2085,
+		"contestName":	"Codeforces Round 1011 (Div. 2)",
+		"ratingUpdateTime":	1742661300,
+		"rank":	3505,
+		"oldRating":	1866,
+		"newRating":	1788,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	500,
-				"points":	468
+				"points":	490
 			}, {
 				"index":	"B",
-				"maxPoints":	750,
-				"points":	636
+				"maxPoints":	1250,
+				"points":	1080
 			}, {
 				"index":	"C",
 				"maxPoints":	1250,
-				"points":	0
+				"points":	480
 			}, {
 				"index":	"D",
 				"maxPoints":	1750,
 				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2500,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	1000,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2090,
+		"contestName":	"Codeforces Round 1012 (Div. 2)",
+		"ratingUpdateTime":	1742717100,
+		"rank":	87,
+		"oldRating":	1788,
+		"newRating":	1904,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Candidate Master",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	497
+			}, {
+				"index":	"B",
+				"maxPoints":	1000,
+				"points":	981
+			}, {
+				"index":	"C",
+				"maxPoints":	1750,
+				"points":	1471
+			}, {
+				"index":	"D",
+				"maxPoints":	2000,
+				"points":	1623
+			}, {
+				"index":	"E1",
+				"maxPoints":	2000,
+				"points":	880
+			}, {
+				"index":	"E2",
+				"maxPoints":	1000,
+				"points":	0
+			}, {
+				"index":	"F1",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F2",
+				"maxPoints":	1500,
+				"points":	0
+			}]
+	}, {
+		"contestId":	2092,
+		"contestName":	"Codeforces Round 1014 (Div. 2)",
+		"ratingUpdateTime":	1743266100,
+		"rank":	937,
+		"oldRating":	1904,
+		"newRating":	1919,
+		"rankBefore":	"Candidate Master",
+		"rankAfter":	"Candidate Master",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	496
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	720
+			}, {
+				"index":	"C",
+				"maxPoints":	1250,
+				"points":	1145
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	1181
 			}, {
 				"index":	"E",
 				"maxPoints":	2250,
@@ -142,37 +1902,37 @@
 		"contestId":	2086,
 		"contestName":	"Educational Codeforces Round 177 (Rated for Div. 2)",
 		"ratingUpdateTime":	1743698100,
-		"rank":	9533,
-		"oldRating":	1039,
-		"newRating":	1060,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A", "B"]
+		"rank":	2444,
+		"oldRating":	1919,
+		"newRating":	1852,
+		"rankBefore":	"Candidate Master",
+		"rankAfter":	"Expert",
+		"problems":	["A", "B", "C", "D"]
 	}, {
 		"contestId":	2084,
 		"contestName":	"Teza Round 1 (Codeforces Round 1015, Div. 1 + Div. 2)",
 		"ratingUpdateTime":	1743874500,
-		"rank":	10914,
-		"oldRating":	1060,
-		"newRating":	950,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"rank":	1095,
+		"oldRating":	1852,
+		"newRating":	1894,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	750,
-				"points":	0
+				"points":	744
 			}, {
 				"index":	"B",
 				"maxPoints":	1000,
-				"points":	0
+				"points":	976
 			}, {
 				"index":	"C",
 				"maxPoints":	1500,
-				"points":	0
+				"points":	1302
 			}, {
 				"index":	"D",
 				"maxPoints":	1750,
-				"points":	0
+				"points":	1414
 			}, {
 				"index":	"E",
 				"maxPoints":	2250,
@@ -195,46 +1955,68 @@
 				"points":	0
 			}]
 	}, {
-		"contestId":	2093,
-		"contestName":	"Codeforces Round 1016 (Div. 3)",
-		"ratingUpdateTime":	1744131000,
-		"rank":	5478,
-		"oldRating":	950,
-		"newRating":	1079,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A", "B", "C", "D"]
-	}, {
-		"contestId":	2094,
-		"contestName":	"Codeforces Round 1017 (Div. 4)",
-		"ratingUpdateTime":	1744566600,
-		"rank":	10363,
-		"oldRating":	1079,
-		"newRating":	1088,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	["A", "B", "C", "E"]
+		"contestId":	2096,
+		"contestName":	"Neowise Labs Contest 1 (Codeforces Round 1018, Div. 1 + Div. 2)",
+		"ratingUpdateTime":	1745080500,
+		"rank":	2624,
+		"oldRating":	1894,
+		"newRating":	1845,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
+		"problems":	[{
+				"index":	"A",
+				"maxPoints":	500,
+				"points":	492
+			}, {
+				"index":	"B",
+				"maxPoints":	750,
+				"points":	720
+			}, {
+				"index":	"C",
+				"maxPoints":	1500,
+				"points":	960
+			}, {
+				"index":	"D",
+				"maxPoints":	1750,
+				"points":	0
+			}, {
+				"index":	"E",
+				"maxPoints":	2000,
+				"points":	0
+			}, {
+				"index":	"F",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"G",
+				"maxPoints":	2750,
+				"points":	0
+			}, {
+				"index":	"H",
+				"maxPoints":	3500,
+				"points":	0
+			}]
 	}, {
 		"contestId":	2108,
 		"contestName":	"Codeforces Round 1022 (Div. 2)",
 		"ratingUpdateTime":	1746117300,
-		"rank":	7976,
-		"oldRating":	1088,
-		"newRating":	1077,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"rank":	1497,
+		"oldRating":	1845,
+		"newRating":	1824,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Expert",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	500,
-				"points":	464
+				"points":	488
 			}, {
 				"index":	"B",
 				"maxPoints":	1250,
-				"points":	0
+				"points":	1055
 			}, {
 				"index":	"C",
 				"maxPoints":	1500,
-				"points":	0
+				"points":	1132
 			}, {
 				"index":	"D",
 				"maxPoints":	2250,
@@ -252,27 +2034,27 @@
 		"contestId":	2107,
 		"contestName":	"Codeforces Round 1023 (Div. 2)",
 		"ratingUpdateTime":	1746463800,
-		"rank":	5783,
-		"oldRating":	1077,
-		"newRating":	1128,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"rank":	310,
+		"oldRating":	1824,
+		"newRating":	1926,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Candidate Master",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	250,
-				"points":	236
+				"points":	248
 			}, {
 				"index":	"B",
 				"maxPoints":	750,
-				"points":	518
+				"points":	726
 			}, {
 				"index":	"C",
 				"maxPoints":	1500,
-				"points":	0
+				"points":	1338
 			}, {
 				"index":	"D",
 				"maxPoints":	2000,
-				"points":	0
+				"points":	1254
 			}, {
 				"index":	"E",
 				"maxPoints":	2750,
@@ -287,106 +2069,64 @@
 				"points":	0
 			}]
 	}, {
-		"contestId":	2102,
-		"contestName":	"Codeforces Round 1024 (Div. 2)",
+		"contestId":	2101,
+		"contestName":	"Codeforces Round 1024 (Div. 1)",
 		"ratingUpdateTime":	1746983100,
-		"rank":	8233,
-		"oldRating":	1128,
-		"newRating":	1094,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
+		"rank":	788,
+		"oldRating":	1926,
+		"newRating":	1895,
+		"rankBefore":	"Candidate Master",
+		"rankAfter":	"Expert",
 		"problems":	[{
 				"index":	"A",
-				"maxPoints":	250,
-				"points":	101
+				"maxPoints":	500,
+				"points":	467
 			}, {
 				"index":	"B",
-				"maxPoints":	500,
-				"points":	390
+				"maxPoints":	1250,
+				"points":	798
 			}, {
 				"index":	"C",
-				"maxPoints":	1000,
+				"maxPoints":	2000,
 				"points":	0
 			}, {
 				"index":	"D",
-				"maxPoints":	1750,
-				"points":	0
-			}, {
-				"index":	"E",
 				"maxPoints":	2500,
 				"points":	0
 			}, {
-				"index":	"F",
-				"maxPoints":	3000,
-				"points":	0
-			}]
-	}, {
-		"contestId":	2109,
-		"contestName":	"Codeforces Round 1025 (Div. 2)",
-		"ratingUpdateTime":	1747500600,
-		"rank":	6298,
-		"oldRating":	1094,
-		"newRating":	1147,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Newbie",
-		"problems":	[{
-				"index":	"A",
-				"maxPoints":	500,
-				"points":	412
-			}, {
-				"index":	"B",
-				"maxPoints":	1000,
-				"points":	738
-			}, {
-				"index":	"C1",
-				"maxPoints":	1250,
-				"points":	0
-			}, {
-				"index":	"C2",
-				"maxPoints":	750,
-				"points":	0
-			}, {
-				"index":	"C3",
-				"maxPoints":	500,
-				"points":	0
-			}, {
-				"index":	"D",
-				"maxPoints":	1750,
-				"points":	0
-			}, {
 				"index":	"E",
-				"maxPoints":	2500,
+				"maxPoints":	3250,
 				"points":	0
 			}, {
 				"index":	"F",
-				"maxPoints":	3000,
+				"maxPoints":	3750,
 				"points":	0
 			}]
 	}, {
 		"contestId":	2110,
 		"contestName":	"Codeforces Round 1026 (Div. 2)",
 		"ratingUpdateTime":	1748104500,
-		"rank":	1105,
-		"oldRating":	1147,
-		"newRating":	1370,
-		"rankBefore":	"Newbie",
-		"rankAfter":	"Pupil",
+		"rank":	575,
+		"oldRating":	1895,
+		"newRating":	1934,
+		"rankBefore":	"Expert",
+		"rankAfter":	"Candidate Master",
 		"problems":	[{
 				"index":	"A",
 				"maxPoints":	500,
-				"points":	472
+				"points":	496
 			}, {
 				"index":	"B",
 				"maxPoints":	750,
-				"points":	628
+				"points":	732
 			}, {
 				"index":	"C",
 				"maxPoints":	1500,
-				"points":	1278
+				"points":	1386
 			}, {
 				"index":	"D",
 				"maxPoints":	2000,
-				"points":	1504
+				"points":	1712
 			}, {
 				"index":	"E",
 				"maxPoints":	2250,

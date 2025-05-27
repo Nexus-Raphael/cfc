@@ -365,7 +365,6 @@ void oneinfo(){
     return;
 }
 
-//----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //选手端---查询年度比赛列表
 void yearlyCFlists0000(int pre) {
     int year_to_filter=2025;
@@ -606,7 +605,7 @@ void yearlyCFlist(int pre) {
     if (pre) upload_web_and_open("http://121.196.195.201/web/etest.html");
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 //选手端---查询参与比赛列表
 void patiCFlist() {
     char *json = fetch_user_cflist(handle);
@@ -713,7 +712,6 @@ void patiCFlist() {
 
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // 判断一个 contest 是否应被统计到 total
 static int isValidContest(const cJSON *contest, time_t now) {
     // phase == FINISHED
@@ -885,7 +883,6 @@ cleanup:
     cJSON_Delete(cj_user);
 }
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //选手端---用户成长曲线
 void userevo() {
     char *json_list = fetch_user_cflist(handle);
@@ -1076,58 +1073,53 @@ void userevo() {
     cJSON_Delete(root);
 }
 
-//教练端
-void coach(){
 
-}
-
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//选手端
-void player(){
+int main(){
     printf("输入用户名(handle):\n");
     scanf("%s",handle);
-    printf("请选择功能(输入数字):\n1. 查询个人信息 \n2. 查询本年度比赛列表\n3. 查询你参加过的比赛列表\n4. 查询出勤率\n5. 查询所有比赛情况\n6. 分析本年度比赛题目\n");
-    int tem=0;
-    scanf("%d",&tem);
-    switch (tem)
-    {
-    case 1:
-        oneinfo();
-        break;
-    case 2:
-        yearlyCFlist(1);
-        break;
-    case 3:
-        patiCFlist();
-        break;
-    case 4:
-        calcAttendance();
-        break;
-    case 5:
-        userevo();
-        break;
-    case 6:
-        curl_global_init(CURL_GLOBAL_DEFAULT);
-        analyzeProblems();
-        curl_global_cleanup();
-        break;
-    default:
-        printf("输入无效!\n");
-        break;
-    }
-}
+    while(1){
+        printf("请选择功能(输入数字):\n1. 查询个人信息 \n2. 查询本年度比赛列表\n3. 查询你参加过的比赛列表\n4. 查询出勤率\n5. 查询所有比赛情况\n6. 分析本年度比赛题目\n7. 重置用户名\n8. 退出程序\n");
 
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//主函数
-int main(){
-    printf("请选择你的身份(输入1或2):\n1. 教练 \n2. 选手\n");
-    int choice=0;
-    scanf("%d",&choice);
-    if(choice==1){
-        coach();
-    }else if(choice==2){
-        player();
-    }else printf("输入有效值!");
+        int tem=0;
+        scanf("%d",&tem);
+        switch (tem)
+        {
+        case 1:
+            oneinfo();
+            break;
+        case 2:
+            yearlyCFlist(1);
+            break;
+        case 3:
+            patiCFlist();
+            break;
+        case 4:
+            calcAttendance();
+            break;
+        case 5:
+            userevo();
+            break;
+        case 6:
+            curl_global_init(CURL_GLOBAL_DEFAULT);
+            analyzeProblems();
+            curl_global_cleanup();
+            break;
+        case 7:
+        printf("输入新的handle:\n");
+        scanf("%s",handle);
+        printf("handle已经成功修改为%s\n",handle);
+        break;
+        case 8:
+            printf("程序即将结束...\n");
+            return 0;
+            break;
+        default:
+            printf("输入无效!\n");
+            break;
+        }
+        printf("按回车键继续:\n");
+        getchar();
+        while (getchar() != '\n');
+    }
     return 0;
 }

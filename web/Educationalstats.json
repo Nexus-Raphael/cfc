@@ -1,0 +1,212 @@
+[{
+		"contestId":	2104,
+		"contestName":	"Educational Codeforces Round 178 (Rated for Div. 2)",
+		"category":	"Educational",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Three Decks",
+				"submitted":	19959,
+				"accepted":	19718,
+				"passRate":	0.98792524675584947
+			}, {
+				"index":	"B",
+				"name":	"Move to the End",
+				"submitted":	15961,
+				"accepted":	15122,
+				"passRate":	0.947434371279995
+			}, {
+				"index":	"C",
+				"name":	"Card Game",
+				"submitted":	13476,
+				"accepted":	13139,
+				"passRate":	0.9749925794004155
+			}, {
+				"index":	"D",
+				"name":	"Array and GCD",
+				"submitted":	10672,
+				"accepted":	9474,
+				"passRate":	0.887743628185907
+			}, {
+				"index":	"E",
+				"name":	"Unpleasant Strings",
+				"submitted":	7436,
+				"accepted":	5651,
+				"passRate":	0.7599515868746638
+			}, {
+				"index":	"F",
+				"name":	"Numbers and Strings",
+				"submitted":	803,
+				"accepted":	500,
+				"passRate":	0.62266500622665
+			}, {
+				"index":	"G",
+				"name":	"Modulo 3",
+				"submitted":	454,
+				"accepted":	298,
+				"passRate":	0.656387665198238
+			}]
+	}, {
+		"contestId":	2086,
+		"contestName":	"Educational Codeforces Round 177 (Rated for Div. 2)",
+		"category":	"Educational",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Cloudberry Jam",
+				"submitted":	28303,
+				"accepted":	28252,
+				"passRate":	0.998198070875879
+			}, {
+				"index":	"B",
+				"name":	"Large Array and Segments",
+				"submitted":	19196,
+				"accepted":	16376,
+				"passRate":	0.85309439466555537
+			}, {
+				"index":	"C",
+				"name":	"Disappearing Permutation",
+				"submitted":	13180,
+				"accepted":	12948,
+				"passRate":	0.98239757207890743
+			}, {
+				"index":	"D",
+				"name":	"Even String",
+				"submitted":	6943,
+				"accepted":	6344,
+				"passRate":	0.913726055019444
+			}, {
+				"index":	"E",
+				"name":	"Zebra-like Numbers",
+				"submitted":	1232,
+				"accepted":	1180,
+				"passRate":	0.95779220779220775
+			}, {
+				"index":	"F",
+				"name":	"Online Palindrome",
+				"submitted":	310,
+				"accepted":	95,
+				"passRate":	0.30645161290322581
+			}]
+	}, {
+		"contestId":	2075,
+		"contestName":	"Educational Codeforces Round 176 (Rated for Div. 2)",
+		"category":	"Educational",
+		"problems":	[{
+				"index":	"A",
+				"name":	"To Zero",
+				"submitted":	25430,
+				"accepted":	24726,
+				"passRate":	0.97231616201337
+			}, {
+				"index":	"B",
+				"name":	"Array Recoloring",
+				"submitted":	23750,
+				"accepted":	15745,
+				"passRate":	0.66294736842105262
+			}, {
+				"index":	"C",
+				"name":	"Two Colors",
+				"submitted":	15298,
+				"accepted":	11607,
+				"passRate":	0.758726630932148
+			}, {
+				"index":	"D",
+				"name":	"Equalization",
+				"submitted":	5783,
+				"accepted":	4413,
+				"passRate":	0.76309873767940517
+			}, {
+				"index":	"E",
+				"name":	"XOR Matrix",
+				"submitted":	837,
+				"accepted":	813,
+				"passRate":	0.971326164874552
+			}, {
+				"index":	"F",
+				"name":	"Beautiful Sequence Returns",
+				"submitted":	683,
+				"accepted":	397,
+				"passRate":	0.581259150805271
+			}]
+	}, {
+		"contestId":	2070,
+		"contestName":	"Educational Codeforces Round 175 (Rated for Div. 2)",
+		"category":	"Educational",
+		"problems":	[{
+				"index":	"A",
+				"name":	"FizzBuzz Remixed",
+				"submitted":	24442,
+				"accepted":	24010,
+				"passRate":	0.98232550527780049
+			}, {
+				"index":	"B",
+				"name":	"Robot Program",
+				"submitted":	18663,
+				"accepted":	17523,
+				"passRate":	0.938916572898248
+			}, {
+				"index":	"C",
+				"name":	"Limited Repainting",
+				"submitted":	12319,
+				"accepted":	11242,
+				"passRate":	0.91257407257082557
+			}, {
+				"index":	"D",
+				"name":	"Tree Jumps",
+				"submitted":	9854,
+				"accepted":	8447,
+				"passRate":	0.857215344022732
+			}, {
+				"index":	"E",
+				"name":	"Game with Binary String",
+				"submitted":	1842,
+				"accepted":	1406,
+				"passRate":	0.763300760043431
+			}, {
+				"index":	"F",
+				"name":	"Friends and Pizza",
+				"submitted":	591,
+				"accepted":	267,
+				"passRate":	0.45177664974619292
+			}]
+	}, {
+		"contestId":	2069,
+		"contestName":	"Educational Codeforces Round 174 (Rated for Div. 2)",
+		"category":	"Educational",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Was there an Array?",
+				"submitted":	26237,
+				"accepted":	24610,
+				"passRate":	0.9379883370812212
+			}, {
+				"index":	"B",
+				"name":	"Set of Strangers",
+				"submitted":	19078,
+				"accepted":	16448,
+				"passRate":	0.86214487891812563
+			}, {
+				"index":	"C",
+				"name":	"Beautiful Sequence",
+				"submitted":	15221,
+				"accepted":	12187,
+				"passRate":	0.800670126798502
+			}, {
+				"index":	"D",
+				"name":	"Palindrome Shuffle",
+				"submitted":	7852,
+				"accepted":	5818,
+				"passRate":	0.74095771777891
+			}, {
+				"index":	"E",
+				"name":	"A, B, AB and BA",
+				"submitted":	2417,
+				"accepted":	1554,
+				"passRate":	0.64294580057923045
+			}, {
+				"index":	"F",
+				"name":	"Graph Inclusion",
+				"submitted":	799,
+				"accepted":	634,
+				"passRate":	0.793491864831039
+			}]
+	}]

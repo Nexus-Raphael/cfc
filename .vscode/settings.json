@@ -3,6 +3,9 @@
         "curl.h": "c",
         "typeinfo": "c",
         "api.h": "c",
-        "multi.h": "c"
+        "multi.h": "c",
+        "cstring": "c",
+        "future": "c",
+        "windows.h": "c"
     }
 }

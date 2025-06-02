@@ -20,7 +20,10 @@
   <canvas id="attendanceChart" width="800" height="400"></canvas>
 
   <script>
-    fetch('attendance.json')
+      if (!location.search.includes('t=')) {
+        location.href = location.pathname + '?t=' + Date.now();
+      }
+      fetch('attendance.json?t=' + Date.now())
       .then(res => res.json())
       .then(data => {
         const labels = Object.keys(data).sort();

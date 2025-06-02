@@ -1,0 +1,336 @@
+[{
+		"contestId":	2114,
+		"contestName":	"Codeforces Round 1027 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Square Year",
+				"submitted":	29418,
+				"accepted":	28410,
+				"passRate":	0.96573526412400568
+			}, {
+				"index":	"B",
+				"name":	"Not Quite a Palindromic String",
+				"submitted":	24326,
+				"accepted":	20739,
+				"passRate":	0.85254460248294
+			}, {
+				"index":	"C",
+				"name":	"Need More Arrays",
+				"submitted":	21366,
+				"accepted":	20171,
+				"passRate":	0.94407001778526634
+			}, {
+				"index":	"D",
+				"name":	"Come a Little Closer",
+				"submitted":	11816,
+				"accepted":	9273,
+				"passRate":	0.78478334461746779
+			}, {
+				"index":	"E",
+				"name":	"Kirei Attacks the Estate",
+				"submitted":	8529,
+				"accepted":	7935,
+				"passRate":	0.930355258529722
+			}, {
+				"index":	"F",
+				"name":	"Small Operations",
+				"submitted":	4939,
+				"accepted":	2792,
+				"passRate":	0.5652966187487346
+			}, {
+				"index":	"G",
+				"name":	"Build an Array",
+				"submitted":	1223,
+				"accepted":	891,
+				"passRate":	0.72853638593622239
+			}]
+	}, {
+		"contestId":	2106,
+		"contestName":	"Codeforces Round 1020 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Dr. TC",
+				"submitted":	28755,
+				"accepted":	28606,
+				"passRate":	0.99481829247087461
+			}, {
+				"index":	"B",
+				"name":	"St. Chroma",
+				"submitted":	21812,
+				"accepted":	21699,
+				"passRate":	0.994819365486888
+			}, {
+				"index":	"C",
+				"name":	"Cherry Bomb",
+				"submitted":	20689,
+				"accepted":	18911,
+				"passRate":	0.91406061191937749
+			}, {
+				"index":	"D",
+				"name":	"Flower Boy",
+				"submitted":	12293,
+				"accepted":	8690,
+				"passRate":	0.706906369478565
+			}, {
+				"index":	"E",
+				"name":	"Wolf",
+				"submitted":	4693,
+				"accepted":	4161,
+				"passRate":	0.88663967611336036
+			}, {
+				"index":	"F",
+				"name":	"Goblin",
+				"submitted":	3361,
+				"accepted":	2897,
+				"passRate":	0.86194584944956854
+			}, {
+				"index":	"G1",
+				"name":	"Baudelaire (easy version)",
+				"submitted":	1414,
+				"accepted":	1168,
+				"passRate":	0.826025459688826
+			}, {
+				"index":	"G2",
+				"name":	"Baudelaire (hard version)",
+				"submitted":	488,
+				"accepted":	394,
+				"passRate":	0.80737704918032782
+			}]
+	}, {
+		"contestId":	2093,
+		"contestName":	"Codeforces Round 1016 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Ideal Generator",
+				"submitted":	33560,
+				"accepted":	33545,
+				"passRate":	0.9995530393325387
+			}, {
+				"index":	"B",
+				"name":	"Expensive Number",
+				"submitted":	27759,
+				"accepted":	25165,
+				"passRate":	0.906552829712886
+			}, {
+				"index":	"C",
+				"name":	"Simple Repetition",
+				"submitted":	29592,
+				"accepted":	24552,
+				"passRate":	0.829683698296837
+			}, {
+				"index":	"D",
+				"name":	"Skibidi Table",
+				"submitted":	11320,
+				"accepted":	10024,
+				"passRate":	0.885512367491166
+			}, {
+				"index":	"E",
+				"name":	"Min Max MEX",
+				"submitted":	14331,
+				"accepted":	10455,
+				"passRate":	0.72953736654804269
+			}, {
+				"index":	"F",
+				"name":	"Hackers and Neural Networks",
+				"submitted":	4868,
+				"accepted":	4710,
+				"passRate":	0.967543138866064
+			}, {
+				"index":	"G",
+				"name":	"Shorten the Array",
+				"submitted":	4017,
+				"accepted":	2607,
+				"passRate":	0.648991784914115
+			}]
+	}, {
+		"contestId":	2091,
+		"contestName":	"Codeforces Round 1013 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Olympiad Date",
+				"submitted":	34177,
+				"accepted":	33695,
+				"passRate":	0.98589694824004448
+			}, {
+				"index":	"B",
+				"name":	"Team Training",
+				"submitted":	29226,
+				"accepted":	28083,
+				"passRate":	0.960890987476904
+			}, {
+				"index":	"C",
+				"name":	"Combination Lock",
+				"submitted":	24266,
+				"accepted":	23708,
+				"passRate":	0.97700486277095522
+			}, {
+				"index":	"D",
+				"name":	"Place of the Olympiad",
+				"submitted":	21066,
+				"accepted":	18885,
+				"passRate":	0.89646824266590719
+			}, {
+				"index":	"E",
+				"name":	"Interesting Ratio",
+				"submitted":	16533,
+				"accepted":	15845,
+				"passRate":	0.95838625778745534
+			}, {
+				"index":	"F",
+				"name":	"Igor and Mountain",
+				"submitted":	6057,
+				"accepted":	4970,
+				"passRate":	0.82053822024104339
+			}, {
+				"index":	"G",
+				"name":	"Gleb and Boating",
+				"submitted":	1682,
+				"accepted":	1213,
+				"passRate":	0.721165279429251
+			}]
+	}, {
+		"contestId":	2074,
+		"contestName":	"Codeforces Round 1009 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Draw a Square",
+				"submitted":	38380,
+				"accepted":	36733,
+				"passRate":	0.957087024491923
+			}, {
+				"index":	"B",
+				"name":	"The Third Side",
+				"submitted":	30816,
+				"accepted":	30391,
+				"passRate":	0.98620846313603328
+			}, {
+				"index":	"C",
+				"name":	"XOR and Triangle",
+				"submitted":	26735,
+				"accepted":	19015,
+				"passRate":	0.71123994763418741
+			}, {
+				"index":	"D",
+				"name":	"Counting Points",
+				"submitted":	14854,
+				"accepted":	10057,
+				"passRate":	0.677056685067995
+			}, {
+				"index":	"E",
+				"name":	"Empty Triangle",
+				"submitted":	7006,
+				"accepted":	5352,
+				"passRate":	0.76391664287753358
+			}, {
+				"index":	"F",
+				"name":	"Counting Necessary Nodes",
+				"submitted":	2340,
+				"accepted":	1973,
+				"passRate":	0.843162393162393
+			}, {
+				"index":	"G",
+				"name":	"Game With Triangles: Season 2",
+				"submitted":	1869,
+				"accepted":	1605,
+				"passRate":	0.85874799357945431
+			}]
+	}, {
+		"contestId":	2072,
+		"contestName":	"Codeforces Round 1006 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"New World, New Me, New Array",
+				"submitted":	36806,
+				"accepted":	36443,
+				"passRate":	0.99013747758517634
+			}, {
+				"index":	"B",
+				"name":	"Having Been a Treasurer in the Past, I Help Goblins Deceive",
+				"submitted":	28686,
+				"accepted":	27137,
+				"passRate":	0.94600153384926444
+			}, {
+				"index":	"C",
+				"name":	"Creating Keys for StORages Has Become My Main Skill",
+				"submitted":	18711,
+				"accepted":	16865,
+				"passRate":	0.90134145689701251
+			}, {
+				"index":	"D",
+				"name":	"For Wizards, the Exam Is Easy, but I Couldn't Handle It",
+				"submitted":	17776,
+				"accepted":	15177,
+				"passRate":	0.85379162916291629
+			}, {
+				"index":	"E",
+				"name":	"Do You Love Your Hero and His Two-Hit Multi-Target Attacks?",
+				"submitted":	11209,
+				"accepted":	10159,
+				"passRate":	0.906325274333125
+			}, {
+				"index":	"F",
+				"name":	"Goodbye, Banker Life",
+				"submitted":	8717,
+				"accepted":	6803,
+				"passRate":	0.780429046690375
+			}, {
+				"index":	"G",
+				"name":	"I've Been Flipping Numbers for 300 Years and Calculated the Sum",
+				"submitted":	2461,
+				"accepted":	1740,
+				"passRate":	0.707029662738724
+			}]
+	}, {
+		"contestId":	2060,
+		"contestName":	"Codeforces Round 998 (Div. 3)",
+		"category":	"Div3",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Fibonacciness",
+				"submitted":	37704,
+				"accepted":	36684,
+				"passRate":	0.97294716740929343
+			}, {
+				"index":	"B",
+				"name":	"Farmer John's Card Game",
+				"submitted":	28466,
+				"accepted":	25263,
+				"passRate":	0.887479800463711
+			}, {
+				"index":	"C",
+				"name":	"Game of Mathletes",
+				"submitted":	30740,
+				"accepted":	27589,
+				"passRate":	0.897495120364346
+			}, {
+				"index":	"D",
+				"name":	"Subtract Min Sort",
+				"submitted":	25349,
+				"accepted":	23406,
+				"passRate":	0.92335003353189471
+			}, {
+				"index":	"E",
+				"name":	"Graph Composition",
+				"submitted":	15698,
+				"accepted":	9851,
+				"passRate":	0.627532169703147
+			}, {
+				"index":	"F",
+				"name":	"Multiplicative Arrays",
+				"submitted":	2209,
+				"accepted":	2039,
+				"passRate":	0.923042100497963
+			}, {
+				"index":	"G",
+				"name":	"Bugged Sort",
+				"submitted":	1263,
+				"accepted":	987,
+				"passRate":	0.78147268408551074
+			}]
+	}]

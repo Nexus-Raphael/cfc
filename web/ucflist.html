@@ -38,8 +38,10 @@
 
   <script>
     var chart = echarts.init(document.getElementById('chart'));
-
-    fetch('user_data.json')
+      if (!location.search.includes('t=')) {
+        location.href = location.pathname + '?t=' + Date.now();
+      }
+    fetch('usrdata.json')
       .then(res => res.json())
       .then(data => {
         const categories = ['Div1','Div2','Div3','Div4','Educational'];

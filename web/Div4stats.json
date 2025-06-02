@@ -1,0 +1,113 @@
+[{
+		"contestId":	2094,
+		"contestName":	"Codeforces Round 1017 (Div. 4)",
+		"category":	"Div4",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Trippi Troppi",
+				"submitted":	38349,
+				"accepted":	38311,
+				"passRate":	0.999009100628439
+			}, {
+				"index":	"B",
+				"name":	"Bobritto Bandito",
+				"submitted":	28877,
+				"accepted":	25681,
+				"passRate":	0.88932368320808952
+			}, {
+				"index":	"C",
+				"name":	"Brr Brrr Patapim",
+				"submitted":	23482,
+				"accepted":	23152,
+				"passRate":	0.98594668256536921
+			}, {
+				"index":	"D",
+				"name":	"Tung Tung Sahur",
+				"submitted":	23899,
+				"accepted":	17608,
+				"passRate":	0.7367672287543412
+			}, {
+				"index":	"E",
+				"name":	"Boneca Ambalabu",
+				"submitted":	16327,
+				"accepted":	13781,
+				"passRate":	0.84406198321798254
+			}, {
+				"index":	"F",
+				"name":	"Trulimero Trulicina",
+				"submitted":	11126,
+				"accepted":	8109,
+				"passRate":	0.728833363293187
+			}, {
+				"index":	"G",
+				"name":	"Chimpanzini Bananini",
+				"submitted":	6433,
+				"accepted":	5434,
+				"passRate":	0.84470697963625063
+			}, {
+				"index":	"H",
+				"name":	"La Vaca Saturno Saturnita",
+				"submitted":	4152,
+				"accepted":	2624,
+				"passRate":	0.631984585741811
+			}]
+	}, {
+		"contestId":	2065,
+		"contestName":	"Codeforces Round 1003 (Div. 4)",
+		"category":	"Div4",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Skibidus and Amog'u",
+				"submitted":	46250,
+				"accepted":	46203,
+				"passRate":	0.99898378378378383
+			}, {
+				"index":	"B",
+				"name":	"Skibidus and Ohio",
+				"submitted":	39232,
+				"accepted":	35218,
+				"passRate":	0.89768556280587275
+			}, {
+				"index":	"C1",
+				"name":	"Skibidus and Fanum Tax (easy version)",
+				"submitted":	32775,
+				"accepted":	23779,
+				"passRate":	0.72552250190694123
+			}, {
+				"index":	"C2",
+				"name":	"Skibidus and Fanum Tax (hard version)",
+				"submitted":	19216,
+				"accepted":	15662,
+				"passRate":	0.81504995836802663
+			}, {
+				"index":	"D",
+				"name":	"Skibidus and Sigma",
+				"submitted":	19174,
+				"accepted":	17440,
+				"passRate":	0.9095650359862314
+			}, {
+				"index":	"E",
+				"name":	"Skibidus and Rizz",
+				"submitted":	11287,
+				"accepted":	9648,
+				"passRate":	0.854788694958802
+			}, {
+				"index":	"F",
+				"name":	"Skibidus and Slay",
+				"submitted":	6127,
+				"accepted":	5511,
+				"passRate":	0.89946140035906641
+			}, {
+				"index":	"G",
+				"name":	"Skibidus and Capping",
+				"submitted":	5794,
+				"accepted":	4778,
+				"passRate":	0.82464618570935455
+			}, {
+				"index":	"H",
+				"name":	"Bro Thinks He's Him",
+				"submitted":	1693,
+				"accepted":	1498,
+				"passRate":	0.884819846426462
+			}]
+	}]

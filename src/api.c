@@ -10,7 +10,7 @@ struct string {
     size_t len;
 };
 
-static size_t write_callback(void *data,size_t size,size_t nmemb,void *userp) {
+static size_t write_callback(void *data,size_t size,size_t nmemb,void *userp) {//curl回调函数
     size_t realsize=size * nmemb;
     struct string *s=(struct string *)userp;
     char *newptr=realloc(s->ptr, s->len + realsize + 1);
@@ -24,33 +24,33 @@ static size_t write_callback(void *data,size_t size,size_t nmemb,void *userp) {
 
 
 char *getusr(const char *handle) {
-    CURL *curl=curl_easy_init();
+    CURL *curl=curl_easy_init();//初始化curl
     if (!curl) return NULL;
 
     struct string s={.ptr=malloc(1),.len=0};
     char errbuf[CURL_ERROR_SIZE]={0};
     char url[256];
-    snprintf(url,sizeof(url),"https://codeforces.com/api/user.info?handles=%s",handle);
+    snprintf(url,sizeof(url),"https://codeforces.com/api/user.info?handles=%s",handle);//构造URL
 
-    curl_easy_setopt(curl,CURLOPT_URL,url);
+    curl_easy_setopt(curl,CURLOPT_URL,url);//设置curl选项
     curl_easy_setopt(curl,CURLOPT_WRITEFUNCTION,write_callback);
     curl_easy_setopt(curl,CURLOPT_WRITEDATA,&s);
     curl_easy_setopt(curl,CURLOPT_ERRORBUFFER,errbuf);
     curl_easy_setopt(curl,CURLOPT_CAINFO,"certs/cacert.pem");
 
 
-    CURLcode res=curl_easy_perform(curl);
+    CURLcode res=curl_easy_perform(curl);//判断请求结果
     if (res!=CURLE_OK) {
-        fprintf(stderr,"curl error: %s\n",errbuf[0]?errbuf:curl_easy_strerror(res));
+        fprintf(stderr,"curl error: %s\n",errbuf[0]?errbuf:curl_easy_strerror(res));//请求返回错误打印错误信息，否则打印curl标准请求错误信息
         if (s.len > 0) {
-            fprintf(stderr, "  >>> raw response:\n%s\n", s.ptr);
+            fprintf(stderr, "  >>> raw response:\n%s\n", s.ptr);//打印失败请求的响应内容
         }
-        free(s.ptr);
+        free(s.ptr);//s无用返回NULL，并清理内存
         curl_easy_cleanup(curl);
         return NULL;
     }
     curl_easy_cleanup(curl);
-    return s.ptr;
+    return s.ptr;//s有用，只清理curl内存
 }
 
 char *getcontests(void) {

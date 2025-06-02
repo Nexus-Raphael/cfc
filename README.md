@@ -1,24 +1,24 @@
-# Codeforces API*
+# 代码运行方法
+在VScode里面打开，把c_cpp_properties.json里面的编译器路径改为自己对应的路径，因为直接改为CC_PATH不一定能成功
+输入mingw32-make clean和mingw32-make all生成新的可执行程序，输入./cfclawer.exe运行程序
+# 乱码相关
+我的界面下右下方显示的是UTF-8,要是你的也是然而输出的还是乱码，可以尝试终端输入chcp 65001，可能有效
+# 可视化相关
+我代码演示视频中直接打开网页，是因为我的代码里面自动上传文件到服务器并且执行访问操作，没有SSH验证的其他设备应该不能实现这种操作，但是还是可以查看HTML的，在web目录下找到相应的HTML后用live server 或默认浏览器应该都可以
 
-## 必要的API
-
-1.   [codeforces.com/api/user.rating?handle=Nexus_Raphael](https://codeforces.com/api/user.rating?handle=Nexus_Raphael)
-     1.   获取单个用户的rating变化记录
-     2.   如果是多个用户，目前不能够直接通过用户名之间加分号实现
-2.   https://codeforces.com/api/user.info?handles=DmitriyH;Fefer_Ivan&checkHistoricHandles=false
-
-     1.   获取一个以上的用户信息
-     2.   checkHistoryHandles是查历史上使用过这个名字的用户，可能没有用（或者是我理解错误）
-3.   [codeforces.com/api/contest.ratingChanges?contestId=2102](https://codeforces.com/api/contest.ratingChanges?contestId=2102)
-          1.   这个是查找某场比赛所有参赛成员的rating变化，但是怎么筛指定人员还想不出，可能要在代码中实现
+> 附上功能菜单，便于乱码情况下的导航
+```c
+输入用户名(handle):
 
 
+请选择功能(输入数字):
+1. 查询个人信息
+2. 查询指定时间比赛列表
+3. 查询你参加过的比赛列表
+4. 查询出勤率
+5. 查询所有比赛情况
+6. 分析本年度比赛题目
+7. 重置用户名
+8. 退出程序
 
-## 可能用得上的API
-
-1.   [codeforces.com/api/user.status?handle=Nexus_Raphael&from=1&count=12](https://codeforces.com/api/user.status?handle=Nexus_Raphael&from=1&count=12)
-     1.   查找某个人最近的提交记录
-     2.   from是选取从最近（1）开始计算count次的记录，超过次数之后也返回OK，结果为所有次数
-2.   [codeforces.com/api/problemset.problems?tags=implementation](https://codeforces.com/api/problemset.problems?tags=implementation)
-     -   通过标签筛题，但是不知道怎么筛rating段和正反序
-     -   现在这样找是从最近的题开始，没有难度顺序
+```

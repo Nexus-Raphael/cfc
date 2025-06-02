@@ -38,7 +38,9 @@
 
   <script>
     var chart = echarts.init(document.getElementById('chart'));
-
+    if (!location.search.includes('t=')) {
+      location.href = location.pathname + '?t=' + Date.now();
+    }
     fetch('data.json')
       .then(res => res.json())
       .then(data => {

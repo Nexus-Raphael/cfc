@@ -1,0 +1,63 @@
+{
+	"Div1":	[],
+	"Div2":	[{
+			"id":	2071,
+			"name":	"Codeforces Round 1007 (Div. 2)",
+			"starttime":	"2025-02-28 22:35:00"
+		}, {
+			"id":	2078,
+			"name":	"Codeforces Round 1008 (Div. 2)",
+			"starttime":	"2025-03-10 22:35:00"
+		}, {
+			"id":	2092,
+			"name":	"Codeforces Round 1014 (Div. 2)",
+			"starttime":	"2025-03-29 22:35:00"
+		}, {
+			"id":	2108,
+			"name":	"Codeforces Round 1022 (Div. 2)",
+			"starttime":	"2025-05-01 22:35:00"
+		}, {
+			"id":	2107,
+			"name":	"Codeforces Round 1023 (Div. 2)",
+			"starttime":	"2025-05-05 22:35:00"
+		}, {
+			"id":	2102,
+			"name":	"Codeforces Round 1024 (Div. 2)",
+			"starttime":	"2025-05-11 22:35:00"
+		}, {
+			"id":	2109,
+			"name":	"Codeforces Round 1025 (Div. 2)",
+			"starttime":	"2025-05-17 22:35:00"
+		}, {
+			"id":	2110,
+			"name":	"Codeforces Round 1026 (Div. 2)",
+			"starttime":	"2025-05-24 22:35:00"
+		}],
+	"Div3":	[{
+			"id":	2074,
+			"name":	"Codeforces Round 1009 (Div. 3)",
+			"starttime":	"2025-03-11 22:35:00"
+		}, {
+			"id":	2093,
+			"name":	"Codeforces Round 1016 (Div. 3)",
+			"starttime":	"2025-04-08 22:35:00"
+		}],
+	"Div4":	[{
+			"id":	2094,
+			"name":	"Codeforces Round 1017 (Div. 4)",
+			"starttime":	"2025-04-13 22:35:00"
+		}],
+	"Educational":	[{
+			"id":	2070,
+			"name":	"Educational Codeforces Round 175 (Rated for Div. 2)",
+			"starttime":	"2025-02-27 22:35:00"
+		}, {
+			"id":	2075,
+			"name":	"Educational Codeforces Round 176 (Rated for Div. 2)",
+			"starttime":	"2025-03-17 22:35:00"
+		}, {
+			"id":	2086,
+			"name":	"Educational Codeforces Round 177 (Rated for Div. 2)",
+			"starttime":	"2025-04-03 22:35:00"
+		}]
+}

@@ -1,0 +1,1346 @@
+[{
+		"contestId":	2110,
+		"contestName":	"Codeforces Round 1026 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Fashionable Array",
+				"submitted":	23087,
+				"accepted":	22198,
+				"passRate":	0.96149348117988476,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	366.07727292415643,
+				"scoreVariance":	22574.84047927853
+			}, {
+				"index":	"B",
+				"name":	"Down with Brackets",
+				"submitted":	21092,
+				"accepted":	18628,
+				"passRate":	0.88317845628674374,
+				"minScore":	0,
+				"maxScore":	750,
+				"averageScore":	460.82979328655415,
+				"scoreVariance":	60620.58225668018
+			}, {
+				"index":	"C",
+				"name":	"Racing",
+				"submitted":	14190,
+				"accepted":	10662,
+				"passRate":	0.75137420718816073,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	647.87329105003528,
+				"scoreVariance":	229007.587891283
+			}, {
+				"index":	"D",
+				"name":	"Fewer Batteries",
+				"submitted":	6739,
+				"accepted":	5076,
+				"passRate":	0.753227481822229,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	733.80917050007417,
+				"scoreVariance":	305906.472561695
+			}, {
+				"index":	"E",
+				"name":	"Melody",
+				"submitted":	1783,
+				"accepted":	1256,
+				"passRate":	0.70443073471676954,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	676.464385866517,
+				"scoreVariance":	308736.49326332175
+			}, {
+				"index":	"F",
+				"name":	"Faculty",
+				"submitted":	1692,
+				"accepted":	951,
+				"passRate":	0.56205673758865249,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	598.53546099290782,
+				"scoreVariance":	370020.00878979929
+			}]
+	}, {
+		"contestId":	2109,
+		"contestName":	"Codeforces Round 1025 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"It's Time To Duel",
+				"submitted":	23144,
+				"accepted":	21245,
+				"passRate":	0.91794849637054965,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	323.80089872105083,
+				"scoreVariance":	27262.033639012545
+			}, {
+				"index":	"B",
+				"name":	"Slice to Survive",
+				"submitted":	15944,
+				"accepted":	12935,
+				"passRate":	0.811276969392875,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	479.87255393878576,
+				"scoreVariance":	104851.74542333191
+			}, {
+				"index":	"C1",
+				"name":	"Hacking Numbers (Easy Version)",
+				"submitted":	9014,
+				"accepted":	8051,
+				"passRate":	0.893166185932993,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	546.395606833814,
+				"scoreVariance":	93681.5002513901
+			}, {
+				"index":	"C2",
+				"name":	"Hacking Numbers (Medium Version)",
+				"submitted":	6137,
+				"accepted":	5996,
+				"passRate":	0.97702460485579268,
+				"minScore":	0,
+				"maxScore":	750,
+				"averageScore":	320.45592308945737,
+				"scoreVariance":	21892.663243799208
+			}, {
+				"index":	"C3",
+				"name":	"Hacking Numbers (Hard Version)",
+				"submitted":	2205,
+				"accepted":	2114,
+				"passRate":	0.95873015873015877,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	156.74829931972789,
+				"scoreVariance":	3377.3538803276424
+			}, {
+				"index":	"D",
+				"name":	"D/D/D",
+				"submitted":	4036,
+				"accepted":	3278,
+				"passRate":	0.81219028741328048,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	582.17963330029727,
+				"scoreVariance":	148113.09533346322
+			}, {
+				"index":	"E",
+				"name":	"Binary String Wowee",
+				"submitted":	902,
+				"accepted":	833,
+				"passRate":	0.92350332594235029,
+				"minScore":	0,
+				"maxScore":	2500,
+				"averageScore":	886.031042128603,
+				"scoreVariance":	191701.985732617
+			}, {
+				"index":	"F",
+				"name":	"Penguin Steps",
+				"submitted":	145,
+				"accepted":	113,
+				"passRate":	0.77931034482758621,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	849.36551724137928,
+				"scoreVariance":	389151.92846611177
+			}]
+	}, {
+		"contestId":	2102,
+		"contestName":	"Codeforces Round 1024 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Dinner Time",
+				"submitted":	17595,
+				"accepted":	16022,
+				"passRate":	0.91059960215970448,
+				"minScore":	0,
+				"maxScore":	250,
+				"averageScore":	147.75731741972152,
+				"scoreVariance":	7321.2507954181383
+			}, {
+				"index":	"B",
+				"name":	"The Picky Cat",
+				"submitted":	16170,
+				"accepted":	14830,
+				"passRate":	0.91713048855906,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	290.81076066790354,
+				"scoreVariance":	25025.847429044137
+			}, {
+				"index":	"C",
+				"name":	"Mex in the Grid",
+				"submitted":	10068,
+				"accepted":	8580,
+				"passRate":	0.85220500595947557,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	478.93961064759634,
+				"scoreVariance":	87320.8954393399
+			}, {
+				"index":	"D",
+				"name":	"Quartet Swapping",
+				"submitted":	7854,
+				"accepted":	3464,
+				"passRate":	0.44104914693149988,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	336.58263305322129,
+				"scoreVariance":	189056.6546818371
+			}, {
+				"index":	"E",
+				"name":	"23 Kingdom",
+				"submitted":	705,
+				"accepted":	483,
+				"passRate":	0.68510638297872339,
+				"minScore":	0,
+				"maxScore":	2500,
+				"averageScore":	562.89361702127655,
+				"scoreVariance":	186623.57024294557
+			}, {
+				"index":	"F",
+				"name":	"Mani and Segments",
+				"submitted":	219,
+				"accepted":	104,
+				"passRate":	0.47488584474885842,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	485.4429223744292,
+				"scoreVariance":	327842.876879131
+			}]
+	}, {
+		"contestId":	2107,
+		"contestName":	"Codeforces Round 1023 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"LRC and VIP",
+				"submitted":	19894,
+				"accepted":	17998,
+				"passRate":	0.90469488287926,
+				"minScore":	0,
+				"maxScore":	250,
+				"averageScore":	145.02156429074094,
+				"scoreVariance":	7367.3843243650917
+			}, {
+				"index":	"B",
+				"name":	"Apples in Boxes",
+				"submitted":	17961,
+				"accepted":	14760,
+				"passRate":	0.8217805244696843,
+				"minScore":	0,
+				"maxScore":	750,
+				"averageScore":	337.52452536050333,
+				"scoreVariance":	56201.550996413265
+			}, {
+				"index":	"C",
+				"name":	"Maximum Subarray Sum",
+				"submitted":	9908,
+				"accepted":	8348,
+				"passRate":	0.842551473556722,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	577.028461849011,
+				"scoreVariance":	146079.09769618069
+			}, {
+				"index":	"D",
+				"name":	"Apple Tree Traversing",
+				"submitted":	3548,
+				"accepted":	2606,
+				"passRate":	0.7344983089064262,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	563.1905298759865,
+				"scoreVariance":	182992.60744132008
+			}, {
+				"index":	"E",
+				"name":	"Ain and Apple Tree",
+				"submitted":	701,
+				"accepted":	523,
+				"passRate":	0.746077032810271,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	736.86162624821679,
+				"scoreVariance":	289053.45446183463
+			}, {
+				"index":	"F1",
+				"name":	"Cycling (Easy Version)",
+				"submitted":	2069,
+				"accepted":	1263,
+				"passRate":	0.6104398260029,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	521.90961817303048,
+				"scoreVariance":	245399.42005732155
+			}, {
+				"index":	"F2",
+				"name":	"Cycling (Hard Version)",
+				"submitted":	384,
+				"accepted":	269,
+				"passRate":	0.70052083333333337,
+				"minScore":	0,
+				"maxScore":	2500,
+				"averageScore":	618.4375,
+				"scoreVariance":	242102.24609375
+			}]
+	}, {
+		"contestId":	2108,
+		"contestName":	"Codeforces Round 1022 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Permutation Warm-Up",
+				"submitted":	18260,
+				"accepted":	18086,
+				"passRate":	0.99047097480832424,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	340.206243154436,
+				"scoreVariance":	22923.6190190734
+			}, {
+				"index":	"B",
+				"name":	"SUMdamental Decomposition",
+				"submitted":	12239,
+				"accepted":	10883,
+				"passRate":	0.88920663452896476,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	599.98202467521855,
+				"scoreVariance":	134038.08693891892
+			}, {
+				"index":	"C",
+				"name":	"Neo's Escape",
+				"submitted":	12493,
+				"accepted":	10240,
+				"passRate":	0.81965900904506528,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	587.91099015448651,
+				"scoreVariance":	164213.14568326675
+			}, {
+				"index":	"D",
+				"name":	"Needle in a Numstack",
+				"submitted":	2588,
+				"accepted":	1776,
+				"passRate":	0.686244204018547,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	595.91267387944356,
+				"scoreVariance":	245329.84245142847
+			}, {
+				"index":	"E",
+				"name":	"Spruce Dispute",
+				"submitted":	713,
+				"accepted":	505,
+				"passRate":	0.70827489481065919,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	701.16970546984567,
+				"scoreVariance":	305633.5798957058
+			}, {
+				"index":	"F",
+				"name":	"Fallen Towers",
+				"submitted":	317,
+				"accepted":	296,
+				"passRate":	0.93375394321766558,
+				"minScore":	0,
+				"maxScore":	3250,
+				"averageScore":	978.4511041009464,
+				"scoreVariance":	156980.94161550014
+			}]
+	}, {
+		"contestId":	2098,
+		"contestName":	"Codeforces Round 1021 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Vadim's Collection",
+				"submitted":	11226,
+				"accepted":	10921,
+				"passRate":	0.97283092820238737,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	325.08008195261,
+				"scoreVariance":	27560.697755774512
+			}, {
+				"index":	"B",
+				"name":	"Sasha and the Apartment Purchase",
+				"submitted":	6287,
+				"accepted":	5416,
+				"passRate":	0.861460155877207,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	604.59249244472721,
+				"scoreVariance":	154339.94432410429
+			}, {
+				"index":	"C",
+				"name":	"Sports Betting",
+				"submitted":	5830,
+				"accepted":	4548,
+				"passRate":	0.78010291595197256,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	633.456603773585,
+				"scoreVariance":	213504.00523512083
+			}, {
+				"index":	"D",
+				"name":	"Baggage Claim",
+				"submitted":	840,
+				"accepted":	508,
+				"passRate":	0.60476190476190472,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	501.92023809523812,
+				"scoreVariance":	224221.70435232425
+			}, {
+				"index":	"E",
+				"name":	"Bermuda Triangle",
+				"submitted":	301,
+				"accepted":	158,
+				"passRate":	0.52491694352159468,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	528.85382059800668,
+				"scoreVariance":	328302.39723623352
+			}, {
+				"index":	"F",
+				"name":	"Homework",
+				"submitted":	218,
+				"accepted":	63,
+				"passRate":	0.28899082568807338,
+				"minScore":	0,
+				"maxScore":	3250,
+				"averageScore":	411.88532110091745,
+				"scoreVariance":	524107.11070196109
+			}]
+	}, {
+		"contestId":	2103,
+		"contestName":	"Codeforces Round 1019 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Common Multiple",
+				"submitted":	21261,
+				"accepted":	20675,
+				"passRate":	0.97243779690513144,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	369.0649546117304,
+				"scoreVariance":	24994.135520327429
+			}, {
+				"index":	"B",
+				"name":	"Binary Typewriter",
+				"submitted":	17328,
+				"accepted":	14230,
+				"passRate":	0.821214219759926,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	501.16054939981535,
+				"scoreVariance":	112246.40728021521
+			}, {
+				"index":	"C",
+				"name":	"Median Splits",
+				"submitted":	10423,
+				"accepted":	7788,
+				"passRate":	0.74719370622661418,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	552.692315072436,
+				"scoreVariance":	186337.29600445536
+			}, {
+				"index":	"D",
+				"name":	"Local Construction",
+				"submitted":	3401,
+				"accepted":	3001,
+				"passRate":	0.88238753307850637,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	775.568362246398,
+				"scoreVariance":	202759.11977529479
+			}, {
+				"index":	"E",
+				"name":	"Keep the Sum",
+				"submitted":	424,
+				"accepted":	402,
+				"passRate":	0.94811320754716977,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	904.90094339622647,
+				"scoreVariance":	155934.83452741173
+			}, {
+				"index":	"F",
+				"name":	"Maximize Nor",
+				"submitted":	740,
+				"accepted":	441,
+				"passRate":	0.595945945945946,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	682.84864864864869,
+				"scoreVariance":	446202.76087655214
+			}]
+	}, {
+		"contestId":	2092,
+		"contestName":	"Codeforces Round 1014 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Kamilka and the Sheep",
+				"submitted":	25810,
+				"accepted":	24805,
+				"passRate":	0.961061604029446,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	331.91801627276249,
+				"scoreVariance":	26542.550427060574
+			}, {
+				"index":	"B",
+				"name":	"Lady Bug",
+				"submitted":	22547,
+				"accepted":	20029,
+				"passRate":	0.888322171464053,
+				"minScore":	0,
+				"maxScore":	750,
+				"averageScore":	412.888322171464,
+				"scoreVariance":	61451.197977346339
+			}, {
+				"index":	"C",
+				"name":	"Asuna and the Mosquitoes",
+				"submitted":	20862,
+				"accepted":	18181,
+				"passRate":	0.87148883136803756,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	570.006710765986,
+				"scoreVariance":	126932.55196340207
+			}, {
+				"index":	"D",
+				"name":	"Mishkin Energizer",
+				"submitted":	8906,
+				"accepted":	5420,
+				"passRate":	0.60857848641365375,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	452.42881203682913,
+				"scoreVariance":	192721.33655589836
+			}, {
+				"index":	"E",
+				"name":	"She knows...",
+				"submitted":	3170,
+				"accepted":	2708,
+				"passRate":	0.85425867507886433,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	804.161829652997,
+				"scoreVariance":	257893.024599807
+			}, {
+				"index":	"F",
+				"name":	"Andryusha and CCB",
+				"submitted":	613,
+				"accepted":	311,
+				"passRate":	0.5073409461663948,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	520.463295269168,
+				"scoreVariance":	331660.99253530754
+			}]
+	}, {
+		"contestId":	2090,
+		"contestName":	"Codeforces Round 1012 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Treasure Hunt",
+				"submitted":	19058,
+				"accepted":	17411,
+				"passRate":	0.91357959911848041,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	279.25406653373909,
+				"scoreVariance":	29423.774572874579
+			}, {
+				"index":	"B",
+				"name":	"Pushing Balls",
+				"submitted":	15196,
+				"accepted":	13153,
+				"passRate":	0.86555672545406681,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	508.46005527770467,
+				"scoreVariance":	107345.35487980742
+			}, {
+				"index":	"C",
+				"name":	"Dining Hall",
+				"submitted":	6515,
+				"accepted":	4957,
+				"passRate":	0.760859554873369,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	594.32371450498852,
+				"scoreVariance":	202868.70273002435
+			}, {
+				"index":	"D",
+				"name":	"Simple Permutation",
+				"submitted":	6481,
+				"accepted":	3736,
+				"passRate":	0.57645425088720881,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	487.93272643110629,
+				"scoreVariance":	253338.95551129829
+			}, {
+				"index":	"E1",
+				"name":	"Canteen (Easy Version)",
+				"submitted":	1535,
+				"accepted":	902,
+				"passRate":	0.58762214983713357,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	434.471661237785,
+				"scoreVariance":	179641.7632034292
+			}, {
+				"index":	"E2",
+				"name":	"Canteen (Hard Version)",
+				"submitted":	294,
+				"accepted":	247,
+				"passRate":	0.84013605442176875,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	296.88095238095241,
+				"scoreVariance":	32907.839569160977
+			}, {
+				"index":	"F1",
+				"name":	"Key of Like (Easy Version)",
+				"submitted":	203,
+				"accepted":	178,
+				"passRate":	0.876847290640394,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	684.44334975369463,
+				"scoreVariance":	145503.47831784311
+			}, {
+				"index":	"F2",
+				"name":	"Key of Like (Hard Version)",
+				"submitted":	24,
+				"accepted":	17,
+				"passRate":	0.70833333333333337,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	405.70833333333331,
+				"scoreVariance":	147842.28993055559
+			}]
+	}, {
+		"contestId":	2085,
+		"contestName":	"Codeforces Round 1011 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Serval and String Theory",
+				"submitted":	22913,
+				"accepted":	19943,
+				"passRate":	0.870379260681709,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	287.01479509448785,
+				"scoreVariance":	29394.345043619905
+			}, {
+				"index":	"B",
+				"name":	"Serval and Final MEX",
+				"submitted":	15865,
+				"accepted":	14208,
+				"passRate":	0.895556255909234,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	651.62212417270723,
+				"scoreVariance":	136085.844918652
+			}, {
+				"index":	"C",
+				"name":	"Serval and The Formula",
+				"submitted":	12358,
+				"accepted":	10512,
+				"passRate":	0.85062307816798832,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	492.52265738792687,
+				"scoreVariance":	105616.31584042168
+			}, {
+				"index":	"D",
+				"name":	"Serval and Kaitenzushi Buffet",
+				"submitted":	4985,
+				"accepted":	4039,
+				"passRate":	0.81023069207622866,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	572.66920762286861,
+				"scoreVariance":	160108.8829535346
+			}, {
+				"index":	"E",
+				"name":	"Serval and Modulo",
+				"submitted":	3195,
+				"accepted":	2440,
+				"passRate":	0.76369327073552429,
+				"minScore":	0,
+				"maxScore":	2500,
+				"averageScore":	734.397496087637,
+				"scoreVariance":	288028.330259771
+			}, {
+				"index":	"F1",
+				"name":	"Serval and Colorful Array (Easy Version)",
+				"submitted":	645,
+				"accepted":	494,
+				"passRate":	0.765891472868217,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	578.368992248062,
+				"scoreVariance":	171525.31500751158
+			}, {
+				"index":	"F2",
+				"name":	"Serval and Colorful Array (Hard Version)",
+				"submitted":	354,
+				"accepted":	289,
+				"passRate":	0.81638418079096042,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	280.40112994350284,
+				"scoreVariance":	29341.997286858823
+			}]
+	}, {
+		"contestId":	2082,
+		"contestName":	"Codeforces Round 1010 (Div. 2, Unrated)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Binary Matrix",
+				"submitted":	9938,
+				"accepted":	9607,
+				"passRate":	0.96669349969812834,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	279.74582410947875,
+				"scoreVariance":	24977.210299024009
+			}, {
+				"index":	"B",
+				"name":	"Floor or Ceil",
+				"submitted":	9690,
+				"accepted":	6297,
+				"passRate":	0.64984520123839,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	252.77502579979361,
+				"scoreVariance":	57185.137209106651
+			}, {
+				"index":	"C",
+				"name":	"Math Division",
+				"submitted":	1824,
+				"accepted":	1545,
+				"passRate":	0.84703947368421051,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	588.12061403508767,
+				"scoreVariance":	165188.16966278094
+			}, {
+				"index":	"D",
+				"name":	"Balancing",
+				"submitted":	526,
+				"accepted":	339,
+				"passRate":	0.644486692015209,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	425.11216730038024,
+				"scoreVariance":	130129.92087857274
+			}, {
+				"index":	"E",
+				"name":	"Quaternary Matrix",
+				"submitted":	65,
+				"accepted":	49,
+				"passRate":	0.75384615384615383,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	683.8,
+				"scoreVariance":	248351.63692307693
+			}, {
+				"index":	"F",
+				"name":	"MST in Modulo Graph",
+				"submitted":	343,
+				"accepted":	223,
+				"passRate":	0.650145772594752,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	643.97084548104954,
+				"scoreVariance":	342071.55017042224
+			}]
+	}, {
+		"contestId":	2078,
+		"contestName":	"Codeforces Round 1008 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Final Verdict",
+				"submitted":	22618,
+				"accepted":	20750,
+				"passRate":	0.917410911663277,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	312.68909717923776,
+				"scoreVariance":	28244.240150825208
+			}, {
+				"index":	"B",
+				"name":	"Vicious Labyrinth",
+				"submitted":	17472,
+				"accepted":	15828,
+				"passRate":	0.90590659340659341,
+				"minScore":	0,
+				"maxScore":	750,
+				"averageScore":	447.5458447802198,
+				"scoreVariance":	60920.83386437333
+			}, {
+				"index":	"C",
+				"name":	"Breach of Faith",
+				"submitted":	13541,
+				"accepted":	9084,
+				"passRate":	0.670851488073259,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	409.64721955542427,
+				"scoreVariance":	135730.29420041473
+			}, {
+				"index":	"D",
+				"name":	"Scammy Game Ad",
+				"submitted":	6319,
+				"accepted":	4954,
+				"passRate":	0.783984807722741,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	564.45814211109348,
+				"scoreVariance":	166077.01134334371
+			}, {
+				"index":	"E",
+				"name":	"Finding OR Sum",
+				"submitted":	1507,
+				"accepted":	1208,
+				"passRate":	0.80159256801592571,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	605.524883875249,
+				"scoreVariance":	162044.42058185441
+			}, {
+				"index":	"F",
+				"name":	"Binary Subsequence Value Sum",
+				"submitted":	515,
+				"accepted":	442,
+				"passRate":	0.858252427184466,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	1099.3300970873786,
+				"scoreVariance":	464519.80948251486
+			}, {
+				"index":	"G",
+				"name":	"Another Folding Strip",
+				"submitted":	41,
+				"accepted":	37,
+				"passRate":	0.902439024390244,
+				"minScore":	0,
+				"maxScore":	3500,
+				"averageScore":	1148.1219512195121,
+				"scoreVariance":	522322.00951814419
+			}]
+	}, {
+		"contestId":	2071,
+		"contestName":	"Codeforces Round 1007 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"The Play Never Ends",
+				"submitted":	25699,
+				"accepted":	24993,
+				"passRate":	0.97252811393439431,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	353.80901980621815,
+				"scoreVariance":	25440.800601938143
+			}, {
+				"index":	"B",
+				"name":	"Perfecto",
+				"submitted":	24283,
+				"accepted":	18350,
+				"passRate":	0.75567269283037519,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	404.49524358604788,
+				"scoreVariance":	99371.0912243394
+			}, {
+				"index":	"C",
+				"name":	"Trapmigiano Reggiano",
+				"submitted":	9514,
+				"accepted":	7861,
+				"passRate":	0.8262560437250368,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	556.65692663443349,
+				"scoreVariance":	142255.92875851737
+			}, {
+				"index":	"D1",
+				"name":	"Infinite Sequence (Easy Version)",
+				"submitted":	6162,
+				"accepted":	5405,
+				"passRate":	0.877150275884453,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	657.408958130477,
+				"scoreVariance":	147728.75388275093
+			}, {
+				"index":	"D2",
+				"name":	"Infinite Sequence (Hard Version)",
+				"submitted":	871,
+				"accepted":	766,
+				"passRate":	0.87944890929965558,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	400.780711825488,
+				"scoreVariance":	44683.029983879038
+			}, {
+				"index":	"E",
+				"name":	"LeaFall",
+				"submitted":	403,
+				"accepted":	344,
+				"passRate":	0.85359801488833742,
+				"minScore":	0,
+				"maxScore":	2500,
+				"averageScore":	774.54094292803973,
+				"scoreVariance":	203881.86122690234
+			}, {
+				"index":	"F",
+				"name":	"Towering Arrays",
+				"submitted":	359,
+				"accepted":	204,
+				"passRate":	0.56824512534818938,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	564.891364902507,
+				"scoreVariance":	293565.801568889
+			}]
+	}, {
+		"contestId":	2064,
+		"contestName":	"Codeforces Round 1005 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Brogramming Contest",
+				"submitted":	25798,
+				"accepted":	24799,
+				"passRate":	0.96127606791224129,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	350.26040778354911,
+				"scoreVariance":	25398.413775506226
+			}, {
+				"index":	"B",
+				"name":	"Variety is Discouraged",
+				"submitted":	21759,
+				"accepted":	17768,
+				"passRate":	0.8165816443770394,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	483.39372213796588,
+				"scoreVariance":	110412.28484684246
+			}, {
+				"index":	"C",
+				"name":	"Remove the Ends",
+				"submitted":	19162,
+				"accepted":	14887,
+				"passRate":	0.77690220227533657,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	501.44713495459763,
+				"scoreVariance":	140874.8680173108
+			}, {
+				"index":	"D",
+				"name":	"Eating",
+				"submitted":	6793,
+				"accepted":	4758,
+				"passRate":	0.700426910054468,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	532.736787869866,
+				"scoreVariance":	202185.802940779
+			}, {
+				"index":	"E",
+				"name":	"Mycraft Sand Sort",
+				"submitted":	1187,
+				"accepted":	1096,
+				"passRate":	0.923336141533277,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	805.54928390901432,
+				"scoreVariance":	175038.83392324462
+			}, {
+				"index":	"F",
+				"name":	"We Be Summing",
+				"submitted":	796,
+				"accepted":	541,
+				"passRate":	0.67964824120603018,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	639.7010050251256,
+				"scoreVariance":	265127.762360799
+			}]
+	}, {
+		"contestId":	2067,
+		"contestName":	"Codeforces Round 1004 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Adjacent Digit Sums",
+				"submitted":	27525,
+				"accepted":	23473,
+				"passRate":	0.852788374205268,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	260.2940599455041,
+				"scoreVariance":	29118.186371618562
+			}, {
+				"index":	"B",
+				"name":	"Two Large Bags",
+				"submitted":	18061,
+				"accepted":	16202,
+				"passRate":	0.89707103704113833,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	477.99313437794143,
+				"scoreVariance":	82318.4062426589
+			}, {
+				"index":	"C",
+				"name":	"Devyatkino",
+				"submitted":	12989,
+				"accepted":	10972,
+				"passRate":	0.8447147586419278,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	488.47024405266,
+				"scoreVariance":	102167.17251130391
+			}, {
+				"index":	"D",
+				"name":	"Object Identification",
+				"submitted":	5216,
+				"accepted":	3738,
+				"passRate":	0.71664110429447858,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	493.10007668711654,
+				"scoreVariance":	147962.546733123
+			}, {
+				"index":	"E",
+				"name":	"White Magic",
+				"submitted":	2641,
+				"accepted":	2172,
+				"passRate":	0.822415751609239,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	510.23741007194246,
+				"scoreVariance":	97115.833450921928
+			}, {
+				"index":	"F",
+				"name":	"Bitwise Slides",
+				"submitted":	778,
+				"accepted":	570,
+				"passRate":	0.73264781491002573,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	537.58483290488437,
+				"scoreVariance":	141788.82120954787
+			}, {
+				"index":	"G",
+				"name":	"Tropical Season",
+				"submitted":	44,
+				"accepted":	31,
+				"passRate":	0.70454545454545459,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	893.13636363636363,
+				"scoreVariance":	698548.25413223135
+			}]
+	}, {
+		"contestId":	2059,
+		"contestName":	"Codeforces Round 1002 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Milya and Two Arrays",
+				"submitted":	28893,
+				"accepted":	27154,
+				"passRate":	0.939812411310698,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	343.87623299761185,
+				"scoreVariance":	27222.422780922716
+			}, {
+				"index":	"B",
+				"name":	"Cost of the Array",
+				"submitted":	20183,
+				"accepted":	16826,
+				"passRate":	0.8336719020958232,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	437.668037457266,
+				"scoreVariance":	85666.929586828745
+			}, {
+				"index":	"C",
+				"name":	"Customer Service",
+				"submitted":	14354,
+				"accepted":	10844,
+				"passRate":	0.75546885885467463,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	508.81900515535739,
+				"scoreVariance":	153645.72466040085
+			}, {
+				"index":	"D",
+				"name":	"Graph and Graph",
+				"submitted":	6031,
+				"accepted":	5487,
+				"passRate":	0.90979936992206933,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	806.64267948930524,
+				"scoreVariance":	208101.28154108766
+			}, {
+				"index":	"E1",
+				"name":	"Stop Gaming (Easy Version)",
+				"submitted":	1040,
+				"accepted":	761,
+				"passRate":	0.73173076923076918,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	410.275,
+				"scoreVariance":	96393.9436057693
+			}, {
+				"index":	"E2",
+				"name":	"Stop Gaming (Hard Version)",
+				"submitted":	335,
+				"accepted":	306,
+				"passRate":	0.91343283582089552,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	472.7761194029851,
+				"scoreVariance":	55968.973758075241
+			}]
+	}, {
+		"contestId":	2063,
+		"contestName":	"Codeforces Round 1000 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Minimal Coprime",
+				"submitted":	29817,
+				"accepted":	28889,
+				"passRate":	0.96887681523962843,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	337.87738538417682,
+				"scoreVariance":	27613.829148504694
+			}, {
+				"index":	"B",
+				"name":	"Subsequence Update",
+				"submitted":	27257,
+				"accepted":	20953,
+				"passRate":	0.76871996184466374,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	453.16300399897273,
+				"scoreVariance":	116066.60647808757
+			}, {
+				"index":	"C",
+				"name":	"Remove Exactly Two",
+				"submitted":	19994,
+				"accepted":	12106,
+				"passRate":	0.605481644493348,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	422.39251775532659,
+				"scoreVariance":	182156.56614587654
+			}, {
+				"index":	"D",
+				"name":	"Game With Triangles",
+				"submitted":	5091,
+				"accepted":	4160,
+				"passRate":	0.81712826556668627,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	764.63563150658024,
+				"scoreVariance":	266421.80221890484
+			}, {
+				"index":	"E",
+				"name":	"Triangle Tree",
+				"submitted":	2470,
+				"accepted":	1949,
+				"passRate":	0.78906882591093119,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	832.84372469635628,
+				"scoreVariance":	333341.2800314707
+			}, {
+				"index":	"F1",
+				"name":	"Counting Is Not Fun (Easy Version)",
+				"submitted":	1412,
+				"accepted":	1225,
+				"passRate":	0.86756373937677056,
+				"minScore":	0,
+				"maxScore":	1750,
+				"averageScore":	556.086402266289,
+				"scoreVariance":	100568.57610405353
+			}, {
+				"index":	"F2",
+				"name":	"Counting Is Not Fun (Hard Version)",
+				"submitted":	851,
+				"accepted":	720,
+				"passRate":	0.846063454759107,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	434.30317273795532,
+				"scoreVariance":	59885.045571602386
+			}]
+	}, {
+		"contestId":	2056,
+		"contestName":	"Codeforces Round 997 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Shape Perimeter",
+				"submitted":	26355,
+				"accepted":	25319,
+				"passRate":	0.9606905710491368,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	351.06901916144943,
+				"scoreVariance":	23187.41845775547
+			}, {
+				"index":	"B",
+				"name":	"Find the Permutation",
+				"submitted":	20046,
+				"accepted":	16150,
+				"passRate":	0.80564701187269283,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	578.66307492766634,
+				"scoreVariance":	161326.17581602623
+			}, {
+				"index":	"C",
+				"name":	"Palindromic Subsequences",
+				"submitted":	17478,
+				"accepted":	17164,
+				"passRate":	0.98203455772971737,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	790.888545600183,
+				"scoreVariance":	128983.24779075582
+			}, {
+				"index":	"D",
+				"name":	"Unique Median",
+				"submitted":	4217,
+				"accepted":	3056,
+				"passRate":	0.72468579558928148,
+				"minScore":	0,
+				"maxScore":	2000,
+				"averageScore":	551.475930756462,
+				"scoreVariance":	195087.87616954511
+			}, {
+				"index":	"E",
+				"name":	"Nested Segments",
+				"submitted":	915,
+				"accepted":	839,
+				"passRate":	0.91693989071038251,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	794.71693989071036,
+				"scoreVariance":	180554.54610648286
+			}, {
+				"index":	"F1",
+				"name":	"Xor of Median (Easy Version)",
+				"submitted":	350,
+				"accepted":	310,
+				"passRate":	0.88571428571428568,
+				"minScore":	0,
+				"maxScore":	2750,
+				"averageScore":	903.94285714285718,
+				"scoreVariance":	263149.453877551
+			}, {
+				"index":	"F2",
+				"name":	"Xor of Median (Hard Version)",
+				"submitted":	256,
+				"accepted":	212,
+				"passRate":	0.828125,
+				"minScore":	0,
+				"maxScore":	1250,
+				"averageScore":	342.75390625,
+				"scoreVariance":	40697.787094116211
+			}]
+	}, {
+		"contestId":	2055,
+		"contestName":	"Codeforces Round 996 (Div. 2)",
+		"category":	"Div2",
+		"problems":	[{
+				"index":	"A",
+				"name":	"Two Frogs",
+				"submitted":	32111,
+				"accepted":	30821,
+				"passRate":	0.95982685061194,
+				"minScore":	0,
+				"maxScore":	500,
+				"averageScore":	350.67814767525147,
+				"scoreVariance":	25648.995317997687
+			}, {
+				"index":	"B",
+				"name":	"Crafting",
+				"submitted":	29680,
+				"accepted":	24551,
+				"passRate":	0.827190026954178,
+				"minScore":	0,
+				"maxScore":	1000,
+				"averageScore":	512.70781671159034,
+				"scoreVariance":	113824.12999280728
+			}, {
+				"index":	"C",
+				"name":	"The Trail",
+				"submitted":	16762,
+				"accepted":	15502,
+				"passRate":	0.924829972556974,
+				"minScore":	0,
+				"maxScore":	1500,
+				"averageScore":	663.269657558764,
+				"scoreVariance":	132919.75320056273
+			}, {
+				"index":	"D",
+				"name":	"Scarecrow",
+				"submitted":	4479,
+				"accepted":	3907,
+				"passRate":	0.8722929225273498,
+				"minScore":	0,
+				"maxScore":	2250,
+				"averageScore":	785.654163875865,
+				"scoreVariance":	215001.0929448189
+			}, {
+				"index":	"E",
+				"name":	"Haystacks",
+				"submitted":	545,
+				"accepted":	397,
+				"passRate":	0.728440366972477,
+				"minScore":	0,
+				"maxScore":	3000,
+				"averageScore":	724.66055045871565,
+				"scoreVariance":	266005.75816850422
+			}, {
+				"index":	"F",
+				"name":	"Cosmic Divide",
+				"submitted":	124,
+				"accepted":	76,
+				"passRate":	0.61290322580645162,
+				"minScore":	0,
+				"maxScore":	3500,
+				"averageScore":	708.32258064516134,
+				"scoreVariance":	410220.54110301757
+			}]
+	}]

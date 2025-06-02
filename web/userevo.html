@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <title>Codeforces 用户参赛进化可视化</title>
+  <title>Codeforces 用户参赛成长可视化</title>
   <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
   <style>
     body {
@@ -54,6 +54,9 @@
   </div>
 
   <script>
+    if (!location.search.includes('t=')) {
+       location.href = location.pathname + '?t=' + Date.now();
+    }
     // Map Codeforces 头衔到颜色
     function getColorByRank(rankName) {
       const map = {
@@ -67,7 +70,7 @@
     }
 
     // 加载用户进化数据
-    fetch('user_evolution.json')
+    fetch('userevo.json')
       .then(res => res.json())
       .then(data => {
         // 构造图表数据

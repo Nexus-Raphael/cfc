@@ -3,13 +3,17 @@
         {
             "name": "Win32",
             "includePath": [
+                // "${workspaceFolder}/**",
+                // "D:/Develop/VScode/mingw64/include",
+                // "D:/Develop/VScode/mingw64/x86_64-w64-mingw32/include",
+                // "D:/Develop/VScode/curl/include",
+                // "D:/Develop/VScode/cJSON",
                 "${workspaceFolder}/**",
-                "D:/Develop/VScode/mingw64/include",
-                "D:/Develop/VScode/mingw64/x86_64-w64-mingw32/include",
-                "D:/Develop/VScode/curl/include",
-                "D:/Develop/VScode/cJSON"
+                "${workspaceFolder}/libs/curl/include",
+                "${workspaceFolder}/libs/cjson/include"
             ],
             "compilerPath": "D:/Develop/VScode/mingw64/bin/gcc.exe",
+            // "compilerPath": "${env:CC_PATH}",
             "intelliSenseMode": "windows-gcc-x64",
             "cppStandard": "gnu++17",
             "cStandard": "gnu17"
